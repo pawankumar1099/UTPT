@@ -21,6 +21,7 @@ import {
   leaderboardSnapshot,
   notifications,
   codingProgress,
+  leaderboardData,
 } from '@/data/student.mock';
 
 const simulate = (payload, delay = 250) =>
@@ -58,6 +59,12 @@ export function getNotifications() {
 // Future: api.get(`/student/coding-progress?platform=${platform}`)
 export function getCodingProgress(platform = 'all') {
   return simulate(codingProgress[platform] ?? codingProgress.all);
+}
+
+// Leaderboard page
+// Future: api.get(`/leaderboard?platform=${platform}&time=${time}`)
+export function getLeaderboard(platform = 'leetcode', time = 'weekly') {
+  return simulate((leaderboardData[platform] ?? leaderboardData.leetcode)[time] ?? leaderboardData.leetcode.weekly);
 }
 
 export function getDashboard() {
