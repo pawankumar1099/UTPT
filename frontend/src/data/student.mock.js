@@ -235,6 +235,58 @@ export const codingProgress = {
   },
 };
 
+// ── GitHub Activity Page ──────────────────────────────────────────────────────
+// Future: api.get('/student/github-activity?range=30')
+
+const githubRng = (i) => Math.abs(Math.sin(i * 3571 + 42)) % 1;
+
+export const githubActivityPage = {
+  totalCommits: 128,
+  totalCommitsChange: 18,
+  pullRequests: 24,
+  pullRequestsChange: 9,
+  repositories: 12,
+  // Contribution heatmap: 3 rows (Mon/Wed/Fri) × 30 cols (days in range)
+  // Values 0–4 intensity
+  contributionHeatmap: Array.from({ length: 3 }, (_, r) =>
+    Array.from({ length: 30 }, (_, c) => Math.floor(githubRng(r * 30 + c) * 5)),
+  ),
+  calendarDays: ['Mon', 'Wed', 'Fri'],
+  // Labels shown at week boundaries (every 7 cols)
+  weekLabels: ['Apr 21', 'Apr 28', 'May 5', 'May 12', 'May 19'],
+  // Commits over time (daily for ~30 days)
+  commitsOverTime: [
+    { date: 'Apr 21', commits: 22 },
+    { date: 'Apr 24', commits: 26 },
+    { date: 'Apr 27', commits: 24 },
+    { date: 'Apr 30', commits: 29 },
+    { date: 'May 3',  commits: 27 },
+    { date: 'May 6',  commits: 25 },
+    { date: 'May 9',  commits: 28 },
+    { date: 'May 12', commits: 30 },
+    { date: 'May 15', commits: 16 },
+    { date: 'May 18', commits: 19 },
+    { date: 'May 21', commits: 32 },
+  ],
+  topRepositories: [
+    { _id: 'r1', name: 'CodeTrack',        commits: 56, language: 'TypeScript', updatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), status: 'Active' },
+    { _id: 'r2', name: 'portfolio-website',commits: 28, language: 'React',      updatedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), status: 'Active' },
+    { _id: 'r3', name: 'DSA-Solutions',    commits: 18, language: 'C++',        updatedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), status: 'Active' },
+    { _id: 'r4', name: 'dev-utilities',    commits: 12, language: 'Python',     updatedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(), status: 'Inactive' },
+    { _id: 'r5', name: 'College-Projects', commits: 8,  language: 'Java',       updatedAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(), status: 'Inactive' },
+    { _id: 'r6', name: 'ML-Experiments',   commits: 6,  language: 'Python',     updatedAt: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString(), status: 'Inactive' },
+  ],
+  recentEvents: [
+    { _id: 'e1', type: 'push',   repo: 'CodeTrack',         message: 'feat: add leaderboard filtering', branch: 'main',    ago: '2 hours ago' },
+    { _id: 'e2', type: 'pr',     repo: 'portfolio-website', message: 'fix: responsive nav on mobile',   branch: 'fix/nav', ago: '5 hours ago' },
+    { _id: 'e3', type: 'push',   repo: 'DSA-Solutions',     message: 'add: median of two sorted arrays', branch: 'main',   ago: '1 day ago'   },
+    { _id: 'e4', type: 'push',   repo: 'CodeTrack',         message: 'refactor: split auth middleware',  branch: 'dev',    ago: '2 days ago'  },
+    { _id: 'e5', type: 'pr',     repo: 'dev-utilities',     message: 'chore: update dependencies',       branch: 'chore',  ago: '3 days ago'  },
+    { _id: 'e6', type: 'push',   repo: 'DSA-Solutions',     message: 'add: graph BFS/DFS templates',    branch: 'main',    ago: '4 days ago'  },
+  ],
+  motivationalMsg: 'Keep up the great work! You are consistent! Keep contributing and building amazing projects.',
+};
+
 // ── Leaderboard Page ──────────────────────────────────────────────────────────
 // Per-platform, per-timeframe. Future: api.get('/leaderboard?platform=leetcode&time=weekly')
 

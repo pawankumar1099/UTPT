@@ -74,7 +74,8 @@ When the Express + MongoDB backend is ready:
 - **Dashboard** — Complete (stat cards, donut, area chart, GitHub heatmap, leaderboard, activity, notifications)
 - **Coding Progress** — Complete (platform filter All/LeetCode/Codeforces, 5 stat cards, multi-line chart with toggleable series, difficulty donut + progress bars, streak cards, submission calendar heatmap, recent submissions table, statistics panel)
 - **Leaderboard** — Complete (Platform filter LeetCode/GitHub/Combined, Time filter Weekly/Monthly, 4 summary cards, search by name/branch/batch, sortable table with medal emojis for top 3, dimmed inactive score columns, pinned "Your Rank" footer row)
-- **Other pages** — Stubs (GitHub Activity, Profile, Notifications, Settings, Trainer, Admin)
+- **GitHub Activity** — Complete (date range picker, 3 stat cards with % change, contribution heatmap Mon/Wed/Fri × 30 days, commits-over-time area chart, top repos with colored progress bars, recent activity events list, motivational banner)
+- **Other pages** — Stubs (Profile, Notifications, Settings, Trainer, Admin)
 
 ## Recent Changes
 
