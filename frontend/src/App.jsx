@@ -1,39 +1,41 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import Dashboard from './pages/student/Dashboard';
-import Coding from './pages/student/Coding';
-import Github from './pages/student/Github';
-import Leaderboard from './pages/student/Leaderboard';
-import Profile from './pages/student/Profile';
-import Notifications from './pages/student/Notifications';
-import TrainerDashboard from './pages/trainer/Dashboard';
-import AdminDashboard from './pages/admin/Dashboard';
-import NotFound from './pages/NotFound';
+import Layout from '@/components/layout/Layout';
+import Login from '@/pages/auth/Login';
+import Register from '@/pages/auth/Register';
+import Dashboard from '@/pages/student/Dashboard';
+import Coding from '@/pages/student/Coding';
+import Github from '@/pages/student/Github';
+import Leaderboard from '@/pages/student/Leaderboard';
+import Profile from '@/pages/student/Profile';
+import Notifications from '@/pages/student/Notifications';
+import Settings from '@/pages/student/Settings';
+import TrainerDashboard from '@/pages/trainer/Dashboard';
+import AdminDashboard from '@/pages/admin/Dashboard';
+import NotFound from '@/pages/NotFound';
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/' element={<Layout />}>
-                    <Route index element={<Navigate to='/dashboard' replace />} />
-                    <Route path='dashboard' element={<Dashboard />} />
-                    <Route path='coding' element={<Coding />} />
-                    <Route path='github' element={<Github />} />
-                    <Route path='leaderboard' element={<Leaderboard />} />
-                    <Route path='profile' element={<Profile />} />
-                    <Route path='notifications' element={<Notifications />} />
-                    <Route path='trainer' element={<TrainerDashboard />} />
-                    <Route path='admin' element={<AdminDashboard />} />
-                </Route>
-                <Route path='*' element={<NotFound />} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="coding" element={<Coding />} />
+          <Route path="github" element={<Github />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="trainer" element={<TrainerDashboard />} />
+          <Route path="admin" element={<AdminDashboard />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
