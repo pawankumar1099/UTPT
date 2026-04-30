@@ -69,6 +69,12 @@ When the Express + MongoDB backend is ready:
 - Path alias `@/` → `frontend/src`, `@assets/` → `attached_assets/` (in vite.config.js + jsconfig.json).
 - Deployment is `static`: `npm --prefix frontend run build` → `frontend/dist`.
 
+## Pages Status
+
+- **Dashboard** — Complete (stat cards, donut, area chart, GitHub heatmap, leaderboard, activity, notifications)
+- **Coding Progress** — Complete (platform filter All/LeetCode/Codeforces, 5 stat cards, multi-line chart with toggleable series, difficulty donut + progress bars, streak cards, submission calendar heatmap, recent submissions table, statistics panel)
+- **Other pages** — Stubs (GitHub Activity, Profile, Leaderboard, Notifications, Settings, Trainer, Admin)
+
 ## Recent Changes
 
 - 2026-04-30: Built the student dashboard UI (sidebar + topbar shell, 6 stat cards, coding progress with custom SVG donut + recharts area chart, GitHub activity heatmap with stats and recent repos, recent activity, leaderboard snapshot with podium, notifications, quick actions). Added Tailwind + shadcn-style primitives. Wired data via a hooks/services layer that returns Promises with mock MongoDB-shaped data — ready for backend swap. Upgraded `lucide-react` and added a custom GitHub icon since the brand was removed in newer versions.

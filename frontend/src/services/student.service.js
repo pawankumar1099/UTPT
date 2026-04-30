@@ -20,6 +20,7 @@ import {
   recentActivity,
   leaderboardSnapshot,
   notifications,
+  codingProgress,
 } from '@/data/student.mock';
 
 const simulate = (payload, delay = 250) =>
@@ -51,6 +52,12 @@ export function getLeaderboardSnapshot() {
 
 export function getNotifications() {
   return simulate(notifications);
+}
+
+// Coding Progress page
+// Future: api.get(`/student/coding-progress?platform=${platform}`)
+export function getCodingProgress(platform = 'all') {
+  return simulate(codingProgress[platform] ?? codingProgress.all);
 }
 
 export function getDashboard() {

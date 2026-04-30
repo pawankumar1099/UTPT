@@ -120,6 +120,121 @@ export const leaderboardSnapshot = {
   you: { _id: 'me', rank: 23, name: 'Pawan Kumar', score: 1250 },
 };
 
+// ── Coding Progress Page ──────────────────────────────────────────────────────
+// Per-platform data shaped like future MongoDB aggregations.
+// Swap simulate() → api.get('/student/coding-progress?platform=all') etc.
+
+const makeCalendar = (seed) => {
+  // 5 rows (Mon/Wed/Fri/Sat/Sun) × 20 cols (~5 months)
+  const rng = (i) => Math.abs(Math.sin(seed + i * 7919)) % 1;
+  return Array.from({ length: 5 }, (_, r) =>
+    Array.from({ length: 20 }, (_, c) => Math.floor(rng(r * 20 + c) * 5)),
+  );
+};
+
+export const codingProgress = {
+  all: {
+    stats: {
+      totalSolved: 532,
+      easy: { solved: 218, total: 600, percentage: 41 },
+      medium: { solved: 247, total: 600, percentage: 46 },
+      hard: { solved: 67, total: 300, percentage: 13 },
+      globalRanking: 12842,
+      globalRankingChange: 2153,
+      acceptanceRate: 78.6,
+      totalSubmissions: 1256,
+      contestsParticipated: 23,
+      contestRating: 1842,
+    },
+    currentStreak: 14,
+    longestStreak: 28,
+    longestStreakRange: '12 Jan – 8 Feb 2024',
+    problemsOverTime: [
+      { date: 'Apr 1',  easy: 60,  medium: 70,  hard: 20, total: 150 },
+      { date: 'Apr 8',  easy: 90,  medium: 110, hard: 28, total: 228 },
+      { date: 'Apr 15', easy: 120, medium: 150, hard: 38, total: 308 },
+      { date: 'Apr 22', easy: 160, medium: 200, hard: 52, total: 412 },
+      { date: 'Apr 29', easy: 218, medium: 247, hard: 67, total: 532 },
+    ],
+    calendarMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    calendarDays: ['Mon', 'Wed', 'Fri', 'Sat', 'Sun'],
+    submissionCalendar: makeCalendar(1),
+    recentSubmissions: [
+      { _id: 's1', problem: 'Two Sum', difficulty: 'Easy', status: 'Accepted', language: 'Python', submittedAt: new Date(Date.now() - 2 * 60 * 1000).toISOString() },
+      { _id: 's2', problem: 'Longest Substring Without Repeating Characters', difficulty: 'Medium', status: 'Accepted', language: 'JavaScript', submittedAt: new Date(Date.now() - 15 * 60 * 1000).toISOString() },
+      { _id: 's3', problem: 'Median of Two Sorted Arrays', difficulty: 'Hard', status: 'Accepted', language: 'C++', submittedAt: new Date(Date.now() - 60 * 60 * 1000).toISOString() },
+      { _id: 's4', problem: 'Valid Parentheses', difficulty: 'Easy', status: 'Accepted', language: 'Python', submittedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString() },
+      { _id: 's5', problem: 'Merge k Sorted Lists', difficulty: 'Hard', status: 'Wrong Answer', language: 'Java', submittedAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString() },
+    ],
+  },
+  leetcode: {
+    stats: {
+      totalSolved: 365,
+      easy: { solved: 152, total: 400, percentage: 42 },
+      medium: { solved: 178, total: 450, percentage: 49 },
+      hard: { solved: 35, total: 200, percentage: 9 },
+      globalRanking: 12842,
+      globalRankingChange: 2153,
+      acceptanceRate: 81.2,
+      totalSubmissions: 890,
+      contestsParticipated: 18,
+      contestRating: 1842,
+    },
+    currentStreak: 14,
+    longestStreak: 28,
+    longestStreakRange: '12 Jan – 8 Feb 2024',
+    problemsOverTime: [
+      { date: 'Apr 1',  easy: 42,  medium: 50,  hard: 12, total: 104 },
+      { date: 'Apr 8',  easy: 68,  medium: 80,  hard: 16, total: 164 },
+      { date: 'Apr 15', easy: 92,  medium: 115, hard: 22, total: 229 },
+      { date: 'Apr 22', easy: 120, medium: 148, hard: 29, total: 297 },
+      { date: 'Apr 29', easy: 152, medium: 178, hard: 35, total: 365 },
+    ],
+    calendarMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    calendarDays: ['Mon', 'Wed', 'Fri', 'Sat', 'Sun'],
+    submissionCalendar: makeCalendar(2),
+    recentSubmissions: [
+      { _id: 'l1', problem: 'Two Sum', difficulty: 'Easy', status: 'Accepted', language: 'Python', submittedAt: new Date(Date.now() - 2 * 60 * 1000).toISOString() },
+      { _id: 'l2', problem: 'Longest Substring Without Repeating Characters', difficulty: 'Medium', status: 'Accepted', language: 'JavaScript', submittedAt: new Date(Date.now() - 15 * 60 * 1000).toISOString() },
+      { _id: 'l3', problem: 'Valid Parentheses', difficulty: 'Easy', status: 'Accepted', language: 'Python', submittedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString() },
+      { _id: 'l4', problem: 'Merge k Sorted Lists', difficulty: 'Hard', status: 'Wrong Answer', language: 'Java', submittedAt: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString() },
+    ],
+  },
+  codeforces: {
+    stats: {
+      totalSolved: 167,
+      easy: { solved: 66, total: 200, percentage: 40 },
+      medium: { solved: 69, total: 150, percentage: 41 },
+      hard: { solved: 32, total: 100, percentage: 19 },
+      globalRanking: 48210,
+      globalRankingChange: 890,
+      acceptanceRate: 73.4,
+      totalSubmissions: 366,
+      contestsParticipated: 5,
+      contestRating: 1420,
+    },
+    currentStreak: 6,
+    longestStreak: 14,
+    longestStreakRange: '3 Mar – 17 Mar 2024',
+    problemsOverTime: [
+      { date: 'Apr 1',  easy: 18, medium: 20, hard: 8,  total: 46 },
+      { date: 'Apr 8',  easy: 28, medium: 32, hard: 13, total: 73 },
+      { date: 'Apr 15', easy: 40, medium: 46, hard: 18, total: 104 },
+      { date: 'Apr 22', easy: 52, medium: 58, hard: 26, total: 136 },
+      { date: 'Apr 29', easy: 66, medium: 69, hard: 32, total: 167 },
+    ],
+    calendarMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    calendarDays: ['Mon', 'Wed', 'Fri', 'Sat', 'Sun'],
+    submissionCalendar: makeCalendar(3),
+    recentSubmissions: [
+      { _id: 'c1', problem: 'Watermelon', difficulty: 'Easy', status: 'Accepted', language: 'C++', submittedAt: new Date(Date.now() - 30 * 60 * 1000).toISOString() },
+      { _id: 'c2', problem: 'Theatre Square', difficulty: 'Easy', status: 'Accepted', language: 'Python', submittedAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString() },
+      { _id: 'c3', problem: 'Lights Out', difficulty: 'Medium', status: 'Time Limit Exceeded', language: 'C++', submittedAt: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString() },
+      { _id: 'c4', problem: 'Dijkstra?', difficulty: 'Hard', status: 'Accepted', language: 'C++', submittedAt: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString() },
+    ],
+  },
+};
+
 export const notifications = [
   {
     _id: 'n1',
