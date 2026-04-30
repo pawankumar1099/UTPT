@@ -3,12 +3,9 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   Code2,
-  User,
   Trophy,
   Bell,
-  Settings,
   LogOut,
-  Sparkles,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -18,13 +15,11 @@ import { cn } from '@/lib/utils';
 import navLogo from '@/assets/navLogo.png';
 
 const navItems = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/coding', label: 'Coding Progress', icon: Code2 },
-  { to: '/github', label: 'GitHub Activity', icon: GithubIcon },
-  { to: '/profile', label: 'Profile', icon: User },
-  { to: '/leaderboard', label: 'Leaderboard', icon: Trophy },
-  { to: '/notifications', label: 'Notifications', icon: Bell },
-  { to: '/settings', label: 'Settings', icon: Settings },
+  { to: '/dashboard',     label: 'Dashboard',       icon: LayoutDashboard },
+  { to: '/coding',        label: 'Coding Progress', icon: Code2 },
+  { to: '/github',        label: 'GitHub Activity', icon: GithubIcon },
+  { to: '/leaderboard',   label: 'Leaderboard',     icon: Trophy },
+  { to: '/notifications', label: 'Notifications',   icon: Bell },
 ];
 
 const Sidebar = ({ profile }) => {
