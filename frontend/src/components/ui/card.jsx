@@ -5,9 +5,12 @@ export const Card = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
-      'rounded-xl border border-slate-200/70 bg-white text-card-foreground shadow-sm',
+      'rounded-2xl border border-white/40 bg-white/60 backdrop-blur-md text-card-foreground transition-all duration-300',
       className,
     )}
+    style={{ 
+      boxShadow: '0 4px 16px 0 rgba(31, 38, 135, 0.04)' 
+    }}
     {...props}
   />
 ));

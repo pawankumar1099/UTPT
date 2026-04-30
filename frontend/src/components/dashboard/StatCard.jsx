@@ -13,11 +13,11 @@ const StatCard = ({ icon: Icon, label, value, sublabel, accent = 'indigo', perce
   };
 
   return (
-    <Card className="p-5 hover:shadow-md transition-shadow">
+    <Card className="p-5 hover:shadow-md hover:scale-105 transition-shadow rounded-sm">
       <div className="flex items-start gap-4">
         <div
           className={cn(
-            'h-12 w-12 rounded-full flex items-center justify-center shrink-0',
+            'h-12 w-12 rounded-sm flex items-center justify-center shrink-0',
             accents[accent],
           )}
         >

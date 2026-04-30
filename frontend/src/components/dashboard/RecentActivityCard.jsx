@@ -35,7 +35,7 @@ const RecentActivityCard = ({ activity = [] }) => {
             </div>
           );
         })}
-        <button className="w-full text-center text-sm text-indigo-600 font-medium pt-3 border-t border-slate-100 hover:underline">
+        <button className="w-full text-center text-sm text-[#0A121A] font-medium pt-3 border-t border-slate-100 hover:underline">
           View All Activity
         </button>
       </CardContent>

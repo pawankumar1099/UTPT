@@ -67,7 +67,7 @@ const LeaderboardCard = ({ leaderboard }) => {
 
         <div className="flex items-center justify-between bg-indigo-50/60 border border-indigo-100 rounded-lg px-3 py-2.5">
           <div className="flex items-center gap-3">
-            <span className="h-7 w-7 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">
+            <span className="h-7 w-7 rounded-full bg-[#0A121A] text-white text-xs font-bold flex items-center justify-center">
               {leaderboard.you.rank}
             </span>
             <div>
@@ -75,10 +75,10 @@ const LeaderboardCard = ({ leaderboard }) => {
               <p className="text-sm font-semibold text-slate-900">{leaderboard.you.name}</p>
             </div>
           </div>
-          <p className="text-sm font-bold text-indigo-700">{formatNumber(leaderboard.you.score)}</p>
+          <p className="text-sm font-bold text-[#0A121A]">{formatNumber(leaderboard.you.score)}</p>
         </div>
 
-        <Button variant="gradient" className="w-full">
+        <Button variant="gradient" className="w-full bg-[#0A121A]">
           View Full Leaderboard
         </Button>
       </CardContent>

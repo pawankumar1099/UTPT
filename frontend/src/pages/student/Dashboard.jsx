@@ -8,18 +8,18 @@ import GithubActivityCard from '@/components/dashboard/GithubActivityCard';
 import RecentActivityCard from '@/components/dashboard/RecentActivityCard';
 import LeaderboardCard from '@/components/dashboard/LeaderboardCard';
 import NotificationsCard from '@/components/dashboard/NotificationsCard';
-import QuickActions from '@/components/dashboard/QuickActions';
+
 
 const DashboardSkeleton = () => (
   <div className="animate-pulse space-y-6">
     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
       {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="h-24 rounded-xl bg-slate-200/60" />
+        <div key={i} className="h-24 rounded-sm bg-slate-200/60" />
       ))}
     </div>
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-      <div className="h-80 rounded-xl bg-slate-200/60 lg:col-span-2" />
-      <div className="h-80 rounded-xl bg-slate-200/60 lg:col-span-3" />
+      <div className="h-80 rounded-sm bg-slate-200/60 lg:col-span-2" />
+      <div className="h-80 rounded-sm bg-slate-200/60 lg:col-span-3" />
     </div>
   </div>
 );
@@ -39,7 +39,7 @@ const Dashboard = () => {
   const { stats, problemsTimeline, github, activity, leaderboard, notifications } = data;
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in ">
       {/* Stat row */}
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
         <StatCard
@@ -99,8 +99,7 @@ const Dashboard = () => {
         <NotificationsCard notifications={notifications} />
       </div>
 
-      {/* Quick actions */}
-      <QuickActions />
+  
     </div>
   );
 };

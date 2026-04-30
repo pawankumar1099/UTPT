@@ -11,11 +11,11 @@ const Layout = () => {
   const unread = data?.notifications?.filter((n) => !n.read).length ?? 0;
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex h-screen overflow-hidden bg-slate-100">
       <Sidebar profile={profile} />
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <Topbar profile={profile} streak={streak} unreadNotifications={unread} />
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6">
+        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 overflow-y-auto scrollbar-thin">
           <Outlet context={{ data, loading, error }} />
         </main>
       </div>

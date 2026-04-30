@@ -82,7 +82,7 @@ const GithubActivityCard = ({ github }) => {
         <div className="pt-1">
           <div className="flex items-center justify-between mb-3">
             <p className="text-sm font-semibold text-slate-700">Recent Repositories</p>
-            <button className="text-xs text-indigo-600 font-medium hover:underline">
+            <button className="text-xs text-[#0A121A] font-medium hover:underline">
               View All
             </button>
           </div>

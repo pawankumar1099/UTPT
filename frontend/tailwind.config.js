@@ -4,48 +4,59 @@ export default {
   theme: {
     extend: {
       colors: {
-        border: 'hsl(214.3 31.8% 91.4%)',
-        input: 'hsl(214.3 31.8% 91.4%)',
-        ring: 'hsl(221.2 83.2% 53.3%)',
-        background: 'hsl(0 0% 100%)',
-        foreground: 'hsl(222.2 84% 4.9%)',
+        border: 'rgba(255, 255, 255, 0.1)',
+        input: 'rgba(255, 255, 255, 0.05)',
+        ring: 'hsl(199, 89%, 48%)',
+        background: 'hsl(220, 20%, 97%)',
+        foreground: 'hsl(224, 71%, 4%)',
         primary: {
-          DEFAULT: 'hsl(221.2 83.2% 53.3%)',
-          foreground: 'hsl(210 40% 98%)',
+          DEFAULT: '#0071e3',
+          foreground: '#ffffff',
         },
         secondary: {
-          DEFAULT: 'hsl(210 40% 96.1%)',
-          foreground: 'hsl(222.2 47.4% 11.2%)',
+          DEFAULT: 'rgba(0, 0, 0, 0.04)',
+          foreground: '#1d1d1f',
         },
         muted: {
-          DEFAULT: 'hsl(210 40% 96.1%)',
-          foreground: 'hsl(215.4 16.3% 46.9%)',
+          DEFAULT: 'rgba(0, 0, 0, 0.04)',
+          foreground: '#86868b',
         },
         accent: {
-          DEFAULT: 'hsl(210 40% 96.1%)',
-          foreground: 'hsl(222.2 47.4% 11.2%)',
+          DEFAULT: 'rgba(255, 255, 255, 0.2)',
+          foreground: '#0071e3',
         },
         destructive: {
           DEFAULT: 'hsl(0 84.2% 60.2%)',
           foreground: 'hsl(210 40% 98%)',
         },
         card: {
-          DEFAULT: 'hsl(0 0% 100%)',
-          foreground: 'hsl(222.2 84% 4.9%)',
+          DEFAULT: 'rgba(255, 255, 255, 0.7)',
+          foreground: '#1d1d1f',
         },
         sidebar: {
-          DEFAULT: 'hsl(222 47% 11%)',
-          foreground: 'hsl(210 40% 98%)',
-          accent: 'hsl(217 33% 17%)',
+          DEFAULT: 'rgba(255, 255, 255, 0.5)',
+          foreground: '#1d1d1f',
+          accent: 'rgba(0, 113, 227, 0.1)',
         },
       },
       borderRadius: {
-        lg: '0.75rem',
-        md: '0.5rem',
-        sm: '0.375rem',
+        lg: '1.25rem',
+        md: '0.75rem',
+        sm: '0.5rem',
+      },
+      boxShadow: {
+        glass: '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+        'glass-sm': '0 4px 16px 0 rgba(31, 38, 135, 0.04)',
+      },
+      backgroundImage: {
+        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['"DM Sans"', 'sans-serif'],
+        subheading: ['"Plus Jakarta Sans"', 'sans-serif'],
+        stats: ['"Space Grotesk"', 'sans-serif'],
+        body: ['"Plus Jakarta Sans"', 'sans-serif'],
       },
       keyframes: {
         'fade-in': {

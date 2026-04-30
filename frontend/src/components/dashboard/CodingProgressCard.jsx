@@ -27,7 +27,7 @@ const CodingProgressCard = ({ stats, timeline }) => {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-row items-center justify-between ">
         <div>
           <CardTitle>Coding Progress</CardTitle>
           <p className="text-xs text-slate-500 mt-1">Difficulty Breakdown</p>
@@ -39,9 +39,11 @@ const CodingProgressCard = ({ stats, timeline }) => {
         </select>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      
+        <div className="grid grid-cols-1  gap-6 items-center">
           {/* Donut */}
-          <div className="flex justify-center">
+          <div className='flex justify-evenly'>
+          <div className="flex">
             <DonutChart
               segments={breakdown}
               size={220}
@@ -50,6 +52,24 @@ const CodingProgressCard = ({ stats, timeline }) => {
               centerValue={stats?.totalSolved ?? 0}
             />
           </div>
+          {/* Legend */}
+        <div className="flex  flex-col  gap-4 mt-2 text-xs">
+          {breakdown.map((b) => (
+            <div key={b.name} className="flex items-center gap-1.5">
+              <span
+                className="h-2.5 w-2.5 rounded-full"
+                style={{ background: COLORS[b.name] }}
+              />
+              <span className="font-medium text-slate-700">{b.name}</span>
+              <span className="text-slate-500">
+                ({b.value}, {Math.round((b.value / totalForPct) * 100)}%)
+              </span>
+            </div>
+
+          ))}
+        </div>
+        </div>
+      
 
           {/* Line chart */}
           <div className="min-w-0">
@@ -98,21 +118,7 @@ const CodingProgressCard = ({ stats, timeline }) => {
           </div>
         </div>
 
-        {/* Legend */}
-        <div className="flex items-center gap-4 mt-2 text-xs">
-          {breakdown.map((b) => (
-            <div key={b.name} className="flex items-center gap-1.5">
-              <span
-                className="h-2.5 w-2.5 rounded-full"
-                style={{ background: COLORS[b.name] }}
-              />
-              <span className="font-medium text-slate-700">{b.name}</span>
-              <span className="text-slate-500">
-                ({b.value}, {Math.round((b.value / totalForPct) * 100)}%)
-              </span>
-            </div>
-          ))}
-        </div>
+        
       </CardContent>
     </Card>
   );

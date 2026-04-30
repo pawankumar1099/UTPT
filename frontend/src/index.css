@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Outfit:wght@100..900&family=Pacifico&family=Playfair+Display:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Special+Gothic+Expanded+One&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,8 +14,44 @@
     height: 100%;
   }
   body {
-    @apply bg-slate-50 text-foreground antialiased;
+    @apply bg-slate-50 text-foreground antialiased selection:bg-primary/20;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(216, 241, 230, 0.46) 0%, rgba(233, 226, 226, 0.28) 90%),
+      radial-gradient(circle at 90% 80%, rgba(238, 221, 221, 0.3) 0%, rgba(214, 214, 231, 0.3) 90%);
+    background-attachment: fixed;
     font-feature-settings: 'cv11', 'ss01';
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/40 backdrop-blur-xl border border-white/20;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+  
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md border border-white/30 transition-all duration-300;
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.04);
+  }
+  
+  .glass-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  }
+
+  .glass-sidebar {
+    @apply bg-white backdrop-blur-2xl border-r border-white/10;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  p, span, input, textarea, button {
+    @apply font-body;
   }
 }
 
