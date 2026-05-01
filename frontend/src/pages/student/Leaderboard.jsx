@@ -129,7 +129,7 @@ function LeaderboardRow({ entry, cols, isMe }) {
 
 function YourRankRow({ you, cols }) {
   return (
-    <tr className="bg-indigo-600 text-white">
+    <tr className="bg-slate-900 text-white">
       <td className="py-4 pl-5 pr-3">
         <div className="flex flex-col items-center">
           <Star size={13} className="text-indigo-200 mb-0.5" />
@@ -169,10 +169,10 @@ function YourRankRow({ you, cols }) {
 
 function SummaryCard({ icon: Icon, iconBg, label, value, sub }) {
   return (
-    <Card className="p-4">
+    <Card className="p-4 shadow-none">
       <div className="flex items-center gap-3">
-        <div className={cn('w-10 h-10 rounded-xl flex items-center justify-center shrink-0', iconBg)}>
-          <Icon size={18} className="text-white" />
+        <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
+          <Icon size={16} className="text-black" />
         </div>
         <div>
           <p className="text-xs text-slate-500 font-medium">{label}</p>
@@ -261,7 +261,7 @@ const Leaderboard = () => {
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-0.5">
-            <Trophy size={20} className="text-indigo-500" />
+            <Trophy size={20} className="text-slate-900" />
             <h1 className="text-xl font-bold text-slate-900">Leaderboard</h1>
           </div>
           <p className="text-sm text-slate-500">Compete and improve every day.</p>

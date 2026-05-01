@@ -13,6 +13,8 @@ import GithubIcon from '@/components/icons/GithubIcon';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import navLogo from '@/assets/navLogo.png';
+import arivanaLogo from '@/assets/arivanaLogo.png';
+
 
 const navItems = [
   { to: '/dashboard',     label: 'Dashboard',       icon: LayoutDashboard },
@@ -114,6 +116,10 @@ const Sidebar = ({ profile }) => {
           )}
         </div>
       )}
+      <div className='h-12 w-full border-t-2 border-gray-300 flex items-center justify-center'>
+        <img src={arivanaLogo} width={58}/>
+        <p className='text-gray-500 text-xs'>developed by <span className='text-black font-semibold text-sm'>ARIVANA</span></p>
+      </div>
     </aside>
   );
 };

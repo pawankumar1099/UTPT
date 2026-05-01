@@ -4,11 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { timeAgo } from '@/lib/utils';
 
 const ICONS = {
-  solve: { Icon: CheckCircle2, bg: 'bg-emerald-100', color: 'text-emerald-600' },
-  commit: { Icon: GitCommit, bg: 'bg-slate-100', color: 'text-slate-700' },
-  rank: { Icon: TrendingUp, bg: 'bg-indigo-100', color: 'text-indigo-600' },
-  streak: { Icon: Flame, bg: 'bg-orange-100', color: 'text-orange-600' },
-  default: { Icon: Star, bg: 'bg-amber-100', color: 'text-amber-600' },
+  solve: { Icon: CheckCircle2, bg: 'bg-white border border-slate-200', color: 'text-black' },
+  commit: { Icon: GitCommit, bg: 'bg-white border border-slate-200', color: 'text-black' },
+  rank: { Icon: TrendingUp, bg: 'bg-white border border-slate-200', color: 'text-black' },
+  streak: { Icon: Flame, bg: 'bg-white border border-slate-200', color: 'text-black' },
+  default: { Icon: Star, bg: 'bg-white border border-slate-200', color: 'text-black' },
 };
 
 const RecentActivityCard = ({ activity = [] }) => {

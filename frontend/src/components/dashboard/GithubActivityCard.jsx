@@ -46,7 +46,7 @@ const GithubActivityCard = ({ github }) => {
         {/* Stats row */}
         <div className="grid grid-cols-3 gap-4 pt-3 border-t border-slate-100">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-lg bg-slate-900 text-white flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-white border border-slate-200 text-black flex items-center justify-center">
               <GithubIcon className="h-4 w-4" />
             </div>
             <div>
@@ -57,7 +57,7 @@ const GithubActivityCard = ({ github }) => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-white border border-slate-200 text-black flex items-center justify-center">
               <Folder className="h-4 w-4" />
             </div>
             <div>
@@ -68,7 +68,7 @@ const GithubActivityCard = ({ github }) => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+            <div className="h-9 w-9 rounded-lg bg-white border border-slate-200 text-black flex items-center justify-center">
               <Activity className="h-4 w-4" />
             </div>
             <div>

@@ -4,12 +4,12 @@ import { cn, formatNumber } from '@/lib/utils';
 
 const StatCard = ({ icon: Icon, label, value, sublabel, accent = 'indigo', percentage }) => {
   const accents = {
-    indigo: 'bg-indigo-50 text-indigo-600',
-    emerald: 'bg-emerald-50 text-emerald-600',
-    amber: 'bg-amber-50 text-amber-600',
-    rose: 'bg-rose-50 text-rose-600',
-    orange: 'bg-orange-50 text-orange-600',
-    slate: 'bg-slate-100 text-slate-700',
+    indigo: 'bg-white text-black border border-slate-200',
+    emerald: 'bg-white text-black border border-slate-200',
+    amber: 'bg-white text-black border border-slate-200',
+    rose: 'bg-white text-black border border-slate-200',
+    orange: 'bg-white text-black border border-slate-200',
+    slate: 'bg-white text-black border border-slate-200',
   };
 
   return (

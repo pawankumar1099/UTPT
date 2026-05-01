@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { timeAgo } from '@/lib/utils';
 
 const ICONS = {
-  warning: { Icon: TrendingDown, bg: 'bg-rose-100', color: 'text-rose-600' },
-  info: { Icon: Info, bg: 'bg-blue-100', color: 'text-blue-600' },
-  success: { Icon: CheckCircle2, bg: 'bg-emerald-100', color: 'text-emerald-600' },
+  warning: { Icon: TrendingDown, bg: 'bg-white border border-slate-200', color: 'text-black' },
+  info: { Icon: Info, bg: 'bg-white border border-slate-200', color: 'text-black' },
+  success: { Icon: CheckCircle2, bg: 'bg-white border border-slate-200', color: 'text-black' },
 };
 
 const NotificationsCard = ({ notifications = [] }) => {

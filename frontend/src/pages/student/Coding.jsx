@@ -85,11 +85,11 @@ function fmtRank(n) {
 
 function StatCard({ icon: Icon, iconBg, label, value, sub, subColor, badge }) {
   return (
-    <Card className="flex flex-col gap-1 p-4">
+    <Card className="flex flex-col gap-1 p-4 shadow-none">
       <div className="flex items-center justify-between mb-1">
         <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">{label}</span>
-        <span className={cn('flex items-center justify-center w-8 h-8 rounded-xl', iconBg)}>
-          <Icon size={15} className="text-white" />
+        <span className={cn('flex items-center justify-center w-8 h-8 rounded-lg bg-white border border-slate-200 shadow-sm')}>
+          <Icon size={14} className="text-black" />
         </span>
       </div>
       <div className="flex items-end gap-2">

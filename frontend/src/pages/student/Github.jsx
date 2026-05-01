@@ -58,12 +58,12 @@ const CustomTooltip = ({ active, payload, label }) => {
 function StatCard({ icon: Icon, iconBg, label, value, change, changeSuffix = 'vs last 30 days' }) {
   return (
     <Card className="p-5 flex items-center gap-4">
-      <div className={cn('w-12 h-12 rounded-2xl flex items-center justify-center shrink-0', iconBg)}>
-        <Icon size={22} className="text-white" />
+      <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
+        <Icon size={18} className="text-black" />
       </div>
       <div>
         <p className="text-xs text-slate-500 font-medium mb-0.5">{label}</p>
-        <p className="text-3xl font-bold text-slate-900 leading-none">{value}</p>
+        <p className="text-2xl font-bold text-slate-900 leading-none">{value}</p>
         {change != null && (
           <p className="text-xs text-emerald-600 font-medium mt-1.5 flex items-center gap-1">
             <ArrowUpRight size={12} />
@@ -364,29 +364,7 @@ const Github = () => {
         </CardContent>
       </Card>
 
-      {/* ── Motivational Banner ── */}
-      <Card className="bg-gradient-to-r from-indigo-50 to-violet-50 border-indigo-100">
-        <CardContent className="p-5 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center shrink-0">
-            <Rocket size={22} className="text-white" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-indigo-900">Keep up the great work!</p>
-            <p className="text-xs text-indigo-600 mt-0.5">{motivationalMsg}</p>
-          </div>
-          <div className="ml-auto flex items-center gap-3 shrink-0">
-            <div className="text-center">
-              <p className="text-2xl font-bold text-indigo-700">{totalCommits}</p>
-              <p className="text-[10px] text-indigo-400 font-medium uppercase tracking-wide">Commits</p>
-            </div>
-            <div className="w-px h-10 bg-indigo-200" />
-            <div className="text-center">
-              <p className="text-2xl font-bold text-violet-700">{pullRequests}</p>
-              <p className="text-[10px] text-violet-400 font-medium uppercase tracking-wide">Pull Requests</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      
     </div>
   );
 };
