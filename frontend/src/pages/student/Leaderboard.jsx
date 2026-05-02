@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { getLeaderboard, getImmersionLeaderboard } from '@/services/student.service';
+import { IMMERSION_WEEKS } from '@/data/trainer.mock';
 import { cn, formatNumber } from '@/lib/utils';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -263,79 +264,112 @@ function ImmersionRow({ entry }) {
   );
 }
 
+// ── Week filter pills ─────────────────────────────────────────────────────────
+
+function WeekPills({ selectedWeek, onChange }) {
+  return (
+    <div className="flex items-center gap-2 flex-wrap">
+      <span className="text-xs text-slate-400 font-medium uppercase tracking-wide shrink-0">Week</span>
+      <div className="flex items-center gap-1.5 flex-wrap">
+        {IMMERSION_WEEKS.map(({ week, label, topic }) => (
+          <button
+            key={week}
+            onClick={() => onChange(week)}
+            title={topic}
+            className={cn(
+              'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border',
+              selectedWeek === week
+                ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                : 'bg-white text-slate-500 border-slate-200 hover:border-indigo-300 hover:text-indigo-600',
+            )}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Immersion View ────────────────────────────────────────────────────────────
 
 function ImmersionView() {
+  const [selectedWeek, setSelectedWeek] = useState(12);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    getImmersionLeaderboard().then((d) => { setData(d); setLoading(false); });
-  }, []);
+    getImmersionLeaderboard(selectedWeek).then((d) => { setData(d); setLoading(false); });
+  }, [selectedWeek]);
 
-  if (loading || !data) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-          <p className="text-sm text-slate-500">Loading immersion results…</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { top3, around, me, total } = data;
+  const weekMeta = data?.weekMeta ?? IMMERSION_WEEKS.find((w) => w.week === selectedWeek) ?? IMMERSION_WEEKS[IMMERSION_WEEKS.length - 1];
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        <SummaryCard icon={Users}    label="Total Appeared"  value={total}           sub="Week 12 Exam" />
-        <SummaryCard icon={Trophy}   label="Your Rank"       value={`#${me?.rank}`}  sub={`of ${total}`} />
-        <SummaryCard icon={BookOpen} label="Your Score"      value={`${me?.marks}/100`} sub={me?.grade} />
-      </div>
+      <WeekPills selectedWeek={selectedWeek} onChange={setSelectedWeek} />
 
-      <Card>
-        <CardHeader className="pb-0">
-          <CardTitle className="text-base">Top 3 — Week 12 Immersion</CardTitle>
-          <p className="text-xs text-slate-500 mt-0.5">Topic: Arrays &amp; Hashing</p>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <ImmersionPodium top3={top3} />
-        </CardContent>
-      </Card>
-
-      <Card className="overflow-hidden p-0">
-        <div className="px-5 py-3 border-b border-slate-100 bg-slate-50/60">
-          <p className="text-sm font-semibold text-slate-700">Around You — Your Neighbourhood</p>
-          <p className="text-xs text-slate-400 mt-0.5">Showing students ranked near your position</p>
+      {loading || !data ? (
+        <div className="flex items-center justify-center h-64">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+            <p className="text-sm text-slate-500">Loading results…</p>
+          </div>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="border-b border-slate-100">
-              <tr>
-                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 pl-5 pr-3 text-left w-14">Rank</th>
-                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-left">Name</th>
-                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Marks</th>
-                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Status</th>
-                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Grade</th>
-              </tr>
-            </thead>
-            <tbody>
-              {around.map((entry) => (
-                <ImmersionRow key={entry._id} entry={entry} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+      ) : (() => {
+        const { top3, around, me, total } = data;
+        return (
+          <>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <SummaryCard icon={Users}    label="Total Appeared"  value={total}              sub={weekMeta.label} />
+              <SummaryCard icon={Trophy}   label="Your Rank"       value={`#${me?.rank}`}     sub={`of ${total}`} />
+              <SummaryCard icon={BookOpen} label="Your Score"      value={`${me?.marks}/100`} sub={me?.grade} />
+            </div>
 
-      <div className="flex items-center gap-4 text-xs text-slate-400 flex-wrap">
-        <div className="flex items-center gap-1.5"><span className="text-base">🥇</span> 1st Place</div>
-        <div className="flex items-center gap-1.5"><span className="text-base">🥈</span> 2nd Place</div>
-        <div className="flex items-center gap-1.5"><span className="text-base">🥉</span> 3rd Place</div>
-        <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-indigo-500 inline-block" /> Your position</div>
-      </div>
+            <Card>
+              <CardHeader className="pb-0">
+                <CardTitle className="text-base">Top 3 — {weekMeta.label} Immersion</CardTitle>
+                <p className="text-xs text-slate-500 mt-0.5">Topic: {weekMeta.topic}</p>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ImmersionPodium top3={top3} />
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden p-0">
+              <div className="px-5 py-3 border-b border-slate-100 bg-slate-50/60">
+                <p className="text-sm font-semibold text-slate-700">Around You — Your Neighbourhood</p>
+                <p className="text-xs text-slate-400 mt-0.5">Showing students ranked near your position</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="border-b border-slate-100">
+                    <tr>
+                      <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 pl-5 pr-3 text-left w-14">Rank</th>
+                      <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-left">Name</th>
+                      <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Marks</th>
+                      <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Status</th>
+                      <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {around.map((entry) => (
+                      <ImmersionRow key={entry._id} entry={entry} />
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </Card>
+
+            <div className="flex items-center gap-4 text-xs text-slate-400 flex-wrap">
+              <div className="flex items-center gap-1.5"><span className="text-base">🥇</span> 1st Place</div>
+              <div className="flex items-center gap-1.5"><span className="text-base">🥈</span> 2nd Place</div>
+              <div className="flex items-center gap-1.5"><span className="text-base">🥉</span> 3rd Place</div>
+              <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-indigo-500 inline-block" /> Your position</div>
+            </div>
+          </>
+        );
+      })()}
     </div>
   );
 }

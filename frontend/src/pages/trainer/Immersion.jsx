@@ -1,5 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTrainerLayoutData } from '@/hooks/useTrainerLayoutData';
+import { getImmersionExamResultsByWeek } from '@/services/trainer.service';
+import { IMMERSION_WEEKS } from '@/data/trainer.mock';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, LineChart, Line,
@@ -496,6 +498,30 @@ const Skeleton = () => (
   </div>
 );
 
+// ── Week Selector ─────────────────────────────────────────────────────────────
+const WeekSelector = ({ selectedWeek, onChange }) => (
+  <div className="flex items-center gap-2 flex-wrap">
+    <span className="text-xs text-slate-400 font-semibold uppercase tracking-wide shrink-0">Week</span>
+    <div className="flex items-center gap-1.5 flex-wrap">
+      {IMMERSION_WEEKS.map(({ week, label, topic }) => (
+        <button
+          key={week}
+          onClick={() => onChange(week)}
+          title={topic}
+          className={cn(
+            'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border',
+            selectedWeek === week
+              ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+              : 'bg-white/60 text-slate-500 border-white/40 hover:border-indigo-300 hover:text-indigo-600 backdrop-blur-md',
+          )}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  </div>
+);
+
 // ── Main Page ─────────────────────────────────────────────────────────────────
 const TABS = [
   { key: 'overview',  label: 'Overview' },
@@ -504,49 +530,72 @@ const TABS = [
   { key: 'weak',      label: 'Weak Students' },
 ];
 
+const WEEK_TABS = new Set(['students', 'weak']);
+
 const ImmersionPage = () => {
   const { data, loading } = useTrainerLayoutData();
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab,    setActiveTab]    = useState('overview');
+  const [selectedWeek, setSelectedWeek] = useState(12);
+  const [weekResults,  setWeekResults]  = useState(null);
+  const [weekLoading,  setWeekLoading]  = useState(false);
+
+  useEffect(() => {
+    if (!WEEK_TABS.has(activeTab)) return;
+    setWeekLoading(true);
+    getImmersionExamResultsByWeek(selectedWeek).then((r) => {
+      setWeekResults(r);
+      setWeekLoading(false);
+    });
+  }, [selectedWeek, activeTab]);
 
   if (loading) return <Skeleton />;
 
   const exam    = data?.immersionExam;
-  const results = data?.immersionExamResults;
+  const results = weekResults ?? data?.immersionExamResults;
   const weakCount = (results || []).filter((s) => s.status === 'Fail' || s.grade === 'Poor').length;
+
+  const showWeekSelector = WEEK_TABS.has(activeTab);
 
   return (
     <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-indigo-50 flex items-center justify-center">
-              <BookOpen className="h-4 w-4 text-indigo-600" />
-            </div>
-            <h1 className="text-xl font-black text-slate-800">Immersion Exam</h1>
-          </div>
-          
+      <div className="flex items-center gap-2">
+        <div className="h-8 w-8 rounded-lg bg-indigo-50 flex items-center justify-center">
+          <BookOpen className="h-4 w-4 text-indigo-600" />
+        </div>
+        <h1 className="text-xl font-black text-slate-800">Immersion Exam</h1>
+      </div>
+
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3 flex-wrap">
+        <div className="flex gap-1 bg-white/40 border border-white/40 backdrop-blur-md rounded-xl p-1 w-fit overflow-x-auto">
+          {TABS.map((t) => (
+            <TabBtn key={t.key} active={activeTab === t.key} onClick={() => setActiveTab(t.key)}>
+              {t.label}
+              {t.key === 'weak' && weakCount > 0 && (
+                <span className="ml-1.5 inline-flex items-center justify-center bg-rose-500 text-white text-[10px] font-black rounded-full h-4 px-1.5">
+                  {weakCount}
+                </span>
+              )}
+            </TabBtn>
+          ))}
         </div>
 
-        
+        {showWeekSelector && (
+          <WeekSelector selectedWeek={selectedWeek} onChange={setSelectedWeek} />
+        )}
       </div>
 
-      <div className="flex gap-1 bg-white/40 border border-white/40 backdrop-blur-md rounded-xl p-1 w-fit overflow-x-auto">
-        {TABS.map((t) => (
-          <TabBtn key={t.key} active={activeTab === t.key} onClick={() => setActiveTab(t.key)}>
-            {t.label}
-            {t.key === 'weak' && weakCount > 0 && (
-              <span className="ml-1.5 inline-flex items-center justify-center bg-rose-500 text-white text-[10px] font-black rounded-full h-4 px-1.5">
-                {weakCount}
-              </span>
-            )}
-          </TabBtn>
-        ))}
-      </div>
-
-      {activeTab === 'overview'  && <OverviewTab  exam={exam} />}
-      {activeTab === 'graph'     && <GraphTab     exam={exam} />}
-      {activeTab === 'students'  && <StudentsTab  results={results} />}
-      {activeTab === 'weak'      && <WeakStudentsTab results={results} />}
+      {activeTab === 'overview' && <OverviewTab exam={exam} />}
+      {activeTab === 'graph'    && <GraphTab    exam={exam} />}
+      {activeTab === 'students' && (
+        weekLoading
+          ? <div className="flex items-center justify-center h-48"><div className="w-7 h-7 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" /></div>
+          : <StudentsTab results={results} />
+      )}
+      {activeTab === 'weak' && (
+        weekLoading
+          ? <div className="flex items-center justify-center h-48"><div className="w-7 h-7 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" /></div>
+          : <WeakStudentsTab results={results} />
+      )}
     </div>
   );
 };

@@ -24,26 +24,27 @@ import {
   leaderboardData,
   githubActivityPage,
 } from '@/data/student.mock';
-import { immersionExamResults } from '@/data/trainer.mock';
+import { immersionExamResultsByWeek, IMMERSION_WEEKS } from '@/data/trainer.mock';
 
-const ME_IMMERSION = {
-  _id: 'me',
-  name: 'Pawan Kumar',
-  avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop&crop=faces',
-  branch: 'CSE',
-  marks: 72,
-  status: 'Pass',
-  grade: 'Average',
-  weakArea: 'Sliding Window',
-  isMe: true,
-};
+const ME_MARKS_BY_WEEK = { 7: 58, 8: 65, 9: 55, 10: 69, 11: 71, 12: 72 };
 
-const immersionRows = (() => {
-  const rows = [...immersionExamResults, ME_IMMERSION]
+function buildImmersionRows(weekNum) {
+  const marks = ME_MARKS_BY_WEEK[weekNum] ?? 72;
+  const me = {
+    _id: 'me',
+    name: 'Pawan Kumar',
+    avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop&crop=faces',
+    branch: 'CSE',
+    marks,
+    status: marks >= 40 ? 'Pass' : 'Fail',
+    grade: marks >= 75 ? 'Good' : marks >= 50 ? 'Average' : 'Poor',
+    weakArea: marks < 75 ? 'Sliding Window' : null,
+    isMe: true,
+  };
+  return [...(immersionExamResultsByWeek[weekNum] ?? immersionExamResultsByWeek[12]), me]
     .sort((a, b) => b.marks - a.marks)
     .map((s, i) => ({ ...s, rank: i + 1 }));
-  return rows;
-})();
+}
 
 const simulate = (payload, delay = 250) =>
   new Promise((resolve) => setTimeout(() => resolve(structuredClone(payload)), delay));
@@ -95,15 +96,17 @@ export function getGithubActivityPage() {
 }
 
 // Immersion Leaderboard
-// Future: api.get('/leaderboard/immersion')
-export function getImmersionLeaderboard() {
-  const me = immersionRows.find((r) => r.isMe);
+// Future: api.get('/leaderboard/immersion?week=12')
+export function getImmersionLeaderboard(week = 12) {
+  const rows = buildImmersionRows(week);
+  const me = rows.find((r) => r.isMe);
   const myRank = me?.rank ?? 1;
-  const top3 = immersionRows.slice(0, 3);
+  const top3 = rows.slice(0, 3);
   const low = Math.max(0, myRank - 6);
-  const high = Math.min(immersionRows.length, myRank + 5);
-  const around = immersionRows.slice(low, high);
-  return simulate({ top3, around, me, total: immersionRows.length });
+  const high = Math.min(rows.length, myRank + 5);
+  const around = rows.slice(low, high);
+  const weekMeta = IMMERSION_WEEKS.find((w) => w.week === week) ?? IMMERSION_WEEKS[IMMERSION_WEEKS.length - 1];
+  return simulate({ top3, around, me, total: rows.length, weekMeta });
 }
 
 export function getDashboard() {

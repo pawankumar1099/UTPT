@@ -13,6 +13,7 @@ import {
   insights,
   immersionExam,
   immersionExamResults,
+  immersionExamResultsByWeek,
 } from '@/data/trainer.mock';
 
 const simulate = (data, ms = 400) =>
@@ -74,6 +75,11 @@ export const getImmersionExam = () =>
 export const getImmersionExamResults = () =>
   simulate(immersionExamResults);
 // Real: return api.get('/trainer/immersion-exam/latest/results').then(r => r.data);
+
+// GET /trainer/immersion-exam/:week/results
+export const getImmersionExamResultsByWeek = (week = 12) =>
+  simulate(immersionExamResultsByWeek[week] ?? immersionExamResults);
+// Real: return api.get(`/trainer/immersion-exam/${week}/results`).then(r => r.data);
 
 // GET /trainer/students/:id
 export const getStudentById = (id) => {

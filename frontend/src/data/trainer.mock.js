@@ -176,22 +176,43 @@ export const immersionExam = {
   ],
 };
 
-// ── Per-student Immersion Exam Results (Week 12) ──────────────────────────────
-// Future: api.get('/trainer/immersion-exam/latest/results')
+// ── Per-student Immersion Exam Results (multi-week) ───────────────────────────
+// Future: api.get('/trainer/immersion-exam/:week/results')
+
 const WEAK_TOPICS = ['Arrays', 'Hashing', 'Two Pointers', 'Sliding Window', 'Binary Search'];
 
-function buildExamResult(student, i) {
+export const IMMERSION_WEEKS = [
+  { week: 7,  label: 'Week 7',  topic: 'Strings',          date: '2024-04-06T09:00:00.000Z' },
+  { week: 8,  label: 'Week 8',  topic: 'Sorting',          date: '2024-04-13T09:00:00.000Z' },
+  { week: 9,  label: 'Week 9',  topic: 'Binary Search',    date: '2024-04-20T09:00:00.000Z' },
+  { week: 10, label: 'Week 10', topic: 'Stacks & Queues',  date: '2024-04-27T09:00:00.000Z' },
+  { week: 11, label: 'Week 11', topic: 'Recursion',        date: '2024-05-11T09:00:00.000Z' },
+  { week: 12, label: 'Week 12', topic: 'Arrays & Hashing', date: '2024-05-18T09:00:00.000Z' },
+];
+
+// Avg score targets per week (matches weeklyTrend)
+const WEEK_AVG = { 7: 58, 8: 61, 9: 59, 10: 64, 11: 64, 12: 68 };
+
+function buildExamResultForWeek(student, i, weekNum) {
+  const avgTarget = WEEK_AVG[weekNum] ?? 65;
+  const offset = avgTarget - 68; // diff from week-12 baseline
+
   let marks;
   if (i < 5) {
-    marks = [98, 94, 91, 87, 85][i];
+    const top5 = [98, 94, 91, 87, 85];
+    marks = Math.max(40, Math.min(100, top5[i] + offset));
   } else if (i >= 20 && i < 30) {
-    marks = [38, 22, 31, 15, 29, 42, 18, 35, 27, 33][i - 20];
+    const atRisk = [38, 22, 31, 15, 29, 42, 18, 35, 27, 33];
+    marks = Math.max(5, Math.min(60, atRisk[i - 20] + offset));
   } else {
-    marks = 45 + ((i * 17 + 7) % 45);
+    // deterministic per (student, week)
+    const seed = (i * 17 + weekNum * 31 + 7) % 45;
+    marks = Math.max(20, Math.min(100, 45 + seed + offset));
   }
+
   const status = marks >= 40 ? 'Pass' : 'Fail';
-  const grade = marks >= 75 ? 'Good' : marks >= 50 ? 'Average' : 'Poor';
-  const weakArea = marks < 75 ? WEAK_TOPICS[i % WEAK_TOPICS.length] : null;
+  const grade  = marks >= 75 ? 'Good' : marks >= 50 ? 'Average' : 'Poor';
+  const weakArea = marks < 75 ? WEAK_TOPICS[(i + weekNum) % WEAK_TOPICS.length] : null;
   return {
     _id: student._id,
     name: student.name,
@@ -204,11 +225,24 @@ function buildExamResult(student, i) {
   };
 }
 
-export const immersionExamResults = allStudents
-  .slice(0, 108)
-  .map((s, i) => buildExamResult(s, i))
-  .sort((a, b) => b.marks - a.marks)
-  .map((s, i) => ({ ...s, rank: i + 1 }));
+function buildWeekResults(weekNum) {
+  return allStudents
+    .slice(0, 108)
+    .map((s, i) => buildExamResultForWeek(s, i, weekNum))
+    .sort((a, b) => b.marks - a.marks)
+    .map((s, i) => ({ ...s, rank: i + 1 }));
+}
+
+export const immersionExamResults = buildWeekResults(12);
+
+export const immersionExamResultsByWeek = {
+  7:  buildWeekResults(7),
+  8:  buildWeekResults(8),
+  9:  buildWeekResults(9),
+  10: buildWeekResults(10),
+  11: buildWeekResults(11),
+  12: immersionExamResults,
+};
 
 // ── Insights ─────────────────────────────────────────────────────────────────
 // Future: api.get('/trainer/insights') — server-computed alerts
