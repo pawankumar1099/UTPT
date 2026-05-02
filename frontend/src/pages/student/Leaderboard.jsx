@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { Trophy, Search, Medal, TrendingUp, Users, Star } from 'lucide-react';
+import { Trophy, Search, Medal, TrendingUp, Users, Star, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { getLeaderboard } from '@/services/student.service';
+import { getLeaderboard, getImmersionLeaderboard } from '@/services/student.service';
 import { cn, formatNumber } from '@/lib/utils';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -12,6 +12,7 @@ const PLATFORMS = [
   { key: 'leetcode',  label: 'LeetCode'  },
   { key: 'github',    label: 'GitHub'    },
   { key: 'combined',  label: 'Combined'  },
+  { key: 'immersion', label: 'Immersion' },
 ];
 
 const TIMES = [
@@ -184,6 +185,161 @@ function SummaryCard({ icon: Icon, iconBg, label, value, sub }) {
   );
 }
 
+// ── Immersion Podium (top 3) ──────────────────────────────────────────────────
+
+const PODIUM = {
+  1: { order: 'order-2', height: 'h-28', bg: 'bg-amber-400',   ring: 'ring-amber-400',  label: '🥇', textColor: 'text-amber-700'  },
+  2: { order: 'order-1', height: 'h-20', bg: 'bg-slate-300',   ring: 'ring-slate-300',  label: '🥈', textColor: 'text-slate-600'  },
+  3: { order: 'order-3', height: 'h-14', bg: 'bg-orange-300',  ring: 'ring-orange-300', label: '🥉', textColor: 'text-orange-600' },
+};
+
+function ImmersionPodium({ top3 }) {
+  return (
+    <div className="flex items-end justify-center gap-4 pt-6 pb-2">
+      {top3.map((s) => {
+        const p = PODIUM[s.rank];
+        return (
+          <div key={s._id} className={cn('flex flex-col items-center gap-2', p.order)}>
+            <div className="text-xl">{p.label}</div>
+            <Avatar className={cn('h-14 w-14 ring-4', p.ring)}>
+              <AvatarImage src={s.avatarUrl} alt={s.name} />
+              <AvatarFallback className="text-lg">{s.name[0]}</AvatarFallback>
+            </Avatar>
+            <div className="text-center">
+              <p className="text-sm font-bold text-slate-900 max-w-[90px] truncate">{s.name}</p>
+              <p className="text-xs text-slate-500">{s.branch}</p>
+              <p className={cn('text-lg font-black mt-0.5', p.textColor)}>{s.marks}<span className="text-xs font-semibold text-slate-400">/100</span></p>
+            </div>
+            <div className={cn('w-20 rounded-t-xl flex items-center justify-center', p.height, p.bg)}>
+              <span className="text-white font-black text-xl">#{s.rank}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Immersion Around-You Row ──────────────────────────────────────────────────
+
+function ImmersionRow({ entry }) {
+  const isMe = !!entry.isMe;
+  const medal = MEDAL[entry.rank];
+  const gradeColor = entry.grade === 'Good' ? 'text-emerald-600 bg-emerald-50' : entry.grade === 'Average' ? 'text-amber-600 bg-amber-50' : 'text-rose-600 bg-rose-50';
+  const statusColor = entry.status === 'Pass' ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-rose-700 bg-rose-50 border-rose-200';
+
+  return (
+    <tr className={cn(
+      'border-b transition-colors',
+      isMe ? 'bg-indigo-50/80 border-indigo-200' : medal ? cn('border-slate-100', medal.bg) : 'border-slate-50 hover:bg-slate-50/60',
+    )}>
+      <td className="py-3 pl-5 pr-3">
+        <RankCell rank={entry.rank} />
+      </td>
+      <td className="py-3 px-4">
+        <div className="flex items-center gap-3">
+          <Avatar className={cn('h-9 w-9 shrink-0', medal ? `ring-2 ${medal.ring}` : isMe ? 'ring-2 ring-indigo-400' : '')}>
+            <AvatarImage src={entry.avatarUrl} alt={entry.name} />
+            <AvatarFallback className="text-xs">{entry.name?.[0]}</AvatarFallback>
+          </Avatar>
+          <div>
+            <p className={cn('text-sm font-semibold', isMe ? 'text-indigo-700' : 'text-slate-900')}>
+              {entry.name} {isMe && <span className="text-xs font-normal text-indigo-400">(You)</span>}
+            </p>
+            <p className="text-xs text-slate-400">{entry.branch}</p>
+          </div>
+        </div>
+      </td>
+      <td className="py-3 px-4 text-center">
+        <span className={cn('text-sm font-bold', isMe ? 'text-indigo-700' : 'text-slate-800')}>{entry.marks}<span className="text-xs font-normal text-slate-400">/100</span></span>
+      </td>
+      <td className="py-3 px-4 text-center">
+        <span className={cn('px-2 py-0.5 rounded-full text-xs font-semibold border', statusColor)}>{entry.status}</span>
+      </td>
+      <td className="py-3 px-4 text-center">
+        <span className={cn('px-2 py-0.5 rounded-full text-xs font-semibold', gradeColor)}>{entry.grade}</span>
+      </td>
+    </tr>
+  );
+}
+
+// ── Immersion View ────────────────────────────────────────────────────────────
+
+function ImmersionView() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    getImmersionLeaderboard().then((d) => { setData(d); setLoading(false); });
+  }, []);
+
+  if (loading || !data) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm text-slate-500">Loading immersion results…</p>
+        </div>
+      </div>
+    );
+  }
+
+  const { top3, around, me, total } = data;
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <SummaryCard icon={Users}    label="Total Appeared"  value={total}           sub="Week 12 Exam" />
+        <SummaryCard icon={Trophy}   label="Your Rank"       value={`#${me?.rank}`}  sub={`of ${total}`} />
+        <SummaryCard icon={BookOpen} label="Your Score"      value={`${me?.marks}/100`} sub={me?.grade} />
+      </div>
+
+      <Card>
+        <CardHeader className="pb-0">
+          <CardTitle className="text-base">Top 3 — Week 12 Immersion</CardTitle>
+          <p className="text-xs text-slate-500 mt-0.5">Topic: Arrays &amp; Hashing</p>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <ImmersionPodium top3={top3} />
+        </CardContent>
+      </Card>
+
+      <Card className="overflow-hidden p-0">
+        <div className="px-5 py-3 border-b border-slate-100 bg-slate-50/60">
+          <p className="text-sm font-semibold text-slate-700">Around You — Your Neighbourhood</p>
+          <p className="text-xs text-slate-400 mt-0.5">Showing students ranked near your position</p>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="border-b border-slate-100">
+              <tr>
+                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 pl-5 pr-3 text-left w-14">Rank</th>
+                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-left">Name</th>
+                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Marks</th>
+                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Status</th>
+                <th className="text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 px-4 text-center">Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {around.map((entry) => (
+                <ImmersionRow key={entry._id} entry={entry} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <div className="flex items-center gap-4 text-xs text-slate-400 flex-wrap">
+        <div className="flex items-center gap-1.5"><span className="text-base">🥇</span> 1st Place</div>
+        <div className="flex items-center gap-1.5"><span className="text-base">🥈</span> 2nd Place</div>
+        <div className="flex items-center gap-1.5"><span className="text-base">🥉</span> 3rd Place</div>
+        <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-indigo-500 inline-block" /> Your position</div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 const Leaderboard = () => {
@@ -196,6 +352,7 @@ const Leaderboard = () => {
   const [sortDir,  setSortDir]  = useState('asc');
 
   const load = useCallback(async (p, t) => {
+    if (p === 'immersion') return;
     setLoading(true);
     try {
       setData(await getLeaderboard(p, t));
@@ -206,9 +363,8 @@ const Leaderboard = () => {
 
   useEffect(() => { load(platform, time); }, [platform, time, load]);
 
-  const cols = SCORE_COL[platform];
+  const cols = SCORE_COL[platform] ?? SCORE_COL.leetcode;
 
-  // Visible score key for single-platform sort
   const primaryScoreKey = platform === 'github' ? 'githubScore' : platform === 'leetcode' ? 'leetcodeScore' : 'totalScore';
 
   const handleSort = (key) => {
@@ -238,26 +394,8 @@ const Leaderboard = () => {
 
   const thCls = 'text-xs text-slate-500 font-semibold uppercase tracking-wide py-3 select-none';
 
-  if (loading || !data) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-          <p className="text-sm text-slate-500">Loading leaderboard…</p>
-        </div>
-      </div>
-    );
-  }
-
-  const { rows, you } = data;
-  const yourEntry = rows.find((r) => r.isMe);
-  const youInTable = !!yourEntry && (!search || yourEntry.name.toLowerCase().includes(search.toLowerCase()));
-  const timeLabel = time === 'weekly' ? 'This Week' : 'This Month';
-  const platformLabel = PLATFORMS.find((p) => p.key === platform)?.label;
-
   return (
     <div className="space-y-6 pb-8">
-      {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-0.5">
@@ -271,107 +409,120 @@ const Leaderboard = () => {
             <p className="text-[10px] text-slate-400 font-medium uppercase tracking-wide mb-1">Platform</p>
             <FilterGroup options={PLATFORMS} active={platform} onChange={setPlatform} accent="indigo" />
           </div>
-          <div>
-            <p className="text-[10px] text-slate-400 font-medium uppercase tracking-wide mb-1">Time</p>
-            <FilterGroup options={TIMES} active={time} onChange={setTime} accent="slate" />
-          </div>
+          {platform !== 'immersion' && (
+            <div>
+              <p className="text-[10px] text-slate-400 font-medium uppercase tracking-wide mb-1">Time</p>
+              <FilterGroup options={TIMES} active={time} onChange={setTime} accent="slate" />
+            </div>
+          )}
         </div>
       </div>
 
-      {/* ── Summary cards ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <SummaryCard icon={Users}    iconBg="bg-indigo-500" label="Total Participants" value={rows.length + 20}    sub={timeLabel} />
-        <SummaryCard icon={Trophy}   iconBg="bg-amber-500"  label="Your Rank"          value={`#${you.rank}`}     sub={`of ${rows.length + 20}`} />
-        <SummaryCard icon={Star}     iconBg="bg-violet-500" label="Your Score"         value={formatNumber(you.totalScore)} sub={platformLabel} />
-        <SummaryCard icon={TrendingUp} iconBg="bg-emerald-500" label="Top Score"       value={formatNumber(rows[0]?.totalScore ?? 0)} sub={rows[0]?.name} />
-      </div>
+      {platform === 'immersion' ? (
+        <ImmersionView />
+      ) : (
+        <>
+          {(() => {
+            if (loading || !data) {
+              return (
+                <div className="flex items-center justify-center h-64">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                    <p className="text-sm text-slate-500">Loading leaderboard…</p>
+                  </div>
+                </div>
+              );
+            }
 
-      {/* ── Search ── */}
-      <div className="relative max-w-sm">
-        <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-        <input
-          type="text"
-          placeholder="Search by name, branch, batch…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-xl bg-white/80 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent transition"
-        />
-      </div>
+            const { rows, you } = data;
+            const yourEntry = rows.find((r) => r.isMe);
+            const youInTable = !!yourEntry && (!search || yourEntry.name.toLowerCase().includes(search.toLowerCase()));
+            const timeLabel = time === 'weekly' ? 'This Week' : 'This Month';
+            const platformLabel = PLATFORMS.find((p) => p.key === platform)?.label;
 
-      {/* ── Table ── */}
-      <Card className="overflow-hidden p-0">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="border-b border-slate-100 bg-slate-50/60">
-              <tr>
-                <th className={cn(thCls, 'pl-5 pr-3 text-left w-14 cursor-pointer')} onClick={() => handleSort('rank')}>
-                  Rank <SortIcon col="rank" />
-                </th>
-                <th className={cn(thCls, 'px-4 text-left')}>Name</th>
-                <th
-                  className={cn(thCls, 'px-4 text-center cursor-pointer', cols.lc ? '' : 'text-slate-300')}
-                  onClick={() => cols.lc && handleSort('leetcodeScore')}
-                >
-                  LeetCode Score {cols.lc && <SortIcon col="leetcodeScore" />}
-                </th>
-                <th
-                  className={cn(thCls, 'px-4 text-center cursor-pointer', cols.gh ? '' : 'text-slate-300')}
-                  onClick={() => cols.gh && handleSort('githubScore')}
-                >
-                  GitHub Score {cols.gh && <SortIcon col="githubScore" />}
-                </th>
-                <th className={cn(thCls, 'px-4 text-center cursor-pointer text-indigo-600')} onClick={() => handleSort('totalScore')}>
-                  Total Score <SortIcon col="totalScore" />
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.length === 0 ? (
-                <tr>
-                  <td colSpan={5} className="py-16 text-center text-slate-400 text-sm">
-                    No results found for "{search}"
-                  </td>
-                </tr>
-              ) : (
-                filtered.map((entry) => (
-                  <LeaderboardRow
-                    key={entry._id}
-                    entry={entry}
-                    cols={cols}
-                    isMe={!!entry.isMe}
+            return (
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <SummaryCard icon={Users}      label="Total Participants" value={rows.length + 20}              sub={timeLabel} />
+                  <SummaryCard icon={Trophy}     label="Your Rank"          value={`#${you.rank}`}                sub={`of ${rows.length + 20}`} />
+                  <SummaryCard icon={Star}       label="Your Score"         value={formatNumber(you.totalScore)}  sub={platformLabel} />
+                  <SummaryCard icon={TrendingUp} label="Top Score"          value={formatNumber(rows[0]?.totalScore ?? 0)} sub={rows[0]?.name} />
+                </div>
+
+                <div className="relative max-w-sm">
+                  <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search by name, branch, batch…"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full pl-9 pr-4 py-2 text-sm border border-slate-200 rounded-xl bg-white/80 text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent transition"
                   />
-                ))
-              )}
-            </tbody>
-            {/* Always-visible "Your Rank" footer when you're not in the visible list */}
-            {!youInTable && (
-              <tfoot>
-                <YourRankRow you={you} cols={cols} />
-              </tfoot>
-            )}
-          </table>
-        </div>
+                </div>
 
-        {/* Your rank pinned footer when you ARE in the table but below the fold */}
-        {youInTable && you.rank > 5 && (
-          <div className="border-t border-indigo-100 bg-indigo-600">
-            <table className="w-full">
-              <tbody>
-                <YourRankRow you={you} cols={cols} />
-              </tbody>
-            </table>
-          </div>
-        )}
-      </Card>
+                <Card className="overflow-hidden p-0">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="border-b border-slate-100 bg-slate-50/60">
+                        <tr>
+                          <th className={cn(thCls, 'pl-5 pr-3 text-left w-14 cursor-pointer')} onClick={() => handleSort('rank')}>
+                            Rank <SortIcon col="rank" />
+                          </th>
+                          <th className={cn(thCls, 'px-4 text-left')}>Name</th>
+                          <th className={cn(thCls, 'px-4 text-center cursor-pointer', cols.lc ? '' : 'text-slate-300')} onClick={() => cols.lc && handleSort('leetcodeScore')}>
+                            LeetCode Score {cols.lc && <SortIcon col="leetcodeScore" />}
+                          </th>
+                          <th className={cn(thCls, 'px-4 text-center cursor-pointer', cols.gh ? '' : 'text-slate-300')} onClick={() => cols.gh && handleSort('githubScore')}>
+                            GitHub Score {cols.gh && <SortIcon col="githubScore" />}
+                          </th>
+                          <th className={cn(thCls, 'px-4 text-center cursor-pointer text-indigo-600')} onClick={() => handleSort('totalScore')}>
+                            Total Score <SortIcon col="totalScore" />
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filtered.length === 0 ? (
+                          <tr>
+                            <td colSpan={5} className="py-16 text-center text-slate-400 text-sm">
+                              No results found for "{search}"
+                            </td>
+                          </tr>
+                        ) : (
+                          filtered.map((entry) => (
+                            <LeaderboardRow key={entry._id} entry={entry} cols={cols} isMe={!!entry.isMe} />
+                          ))
+                        )}
+                      </tbody>
+                      {!youInTable && (
+                        <tfoot>
+                          <YourRankRow you={you} cols={cols} />
+                        </tfoot>
+                      )}
+                    </table>
+                  </div>
+                  {youInTable && you.rank > 5 && (
+                    <div className="border-t border-indigo-100 bg-indigo-600">
+                      <table className="w-full">
+                        <tbody>
+                          <YourRankRow you={you} cols={cols} />
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </Card>
 
-      {/* ── Legend ── */}
-      <div className="flex items-center gap-4 text-xs text-slate-400 flex-wrap">
-        <div className="flex items-center gap-1.5"><span className="text-base">🥇</span> 1st Place</div>
-        <div className="flex items-center gap-1.5"><span className="text-base">🥈</span> 2nd Place</div>
-        <div className="flex items-center gap-1.5"><span className="text-base">🥉</span> 3rd Place</div>
-        <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-indigo-500 inline-block" /> Your position</div>
-        <p className="text-slate-300">· Click column headers to sort</p>
-      </div>
+                <div className="flex items-center gap-4 text-xs text-slate-400 flex-wrap">
+                  <div className="flex items-center gap-1.5"><span className="text-base">🥇</span> 1st Place</div>
+                  <div className="flex items-center gap-1.5"><span className="text-base">🥈</span> 2nd Place</div>
+                  <div className="flex items-center gap-1.5"><span className="text-base">🥉</span> 3rd Place</div>
+                  <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-full bg-indigo-500 inline-block" /> Your position</div>
+                  <p className="text-slate-300">· Click column headers to sort</p>
+                </div>
+              </>
+            );
+          })()}
+        </>
+      )}
     </div>
   );
 };
