@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Flame, GitBranch, Code2, TrendingUp, TrendingDown } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
@@ -42,6 +43,7 @@ const DifficultyBar = ({ label, solved, total, color }) => {
 };
 
 const StudentDetailModal = ({ student, onClose }) => {
+  const navigate = useNavigate();
   if (!student) return null;
 
   const isActive = student.status === 'Active';
@@ -164,7 +166,10 @@ const StudentDetailModal = ({ student, onClose }) => {
             <button className="flex-1 py-2 text-sm font-semibold rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
               Send Reminder
             </button>
-            <button className="flex-1 py-2 text-sm font-semibold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors">
+            <button
+              onClick={() => { onClose(); navigate(`/trainer/student/${student._id}`); }}
+              className="flex-1 py-2 text-sm font-semibold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors"
+            >
               View Full Profile
             </button>
           </div>
