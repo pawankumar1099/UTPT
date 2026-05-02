@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Flame, GitBranch, Code2, TrendingUp, TrendingDown } from 'lucide-react';
+import { useAuthStore } from '@/store/authStore';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
@@ -44,6 +45,7 @@ const DifficultyBar = ({ label, solved, total, color }) => {
 
 const StudentDetailModal = ({ student, onClose }) => {
   const navigate = useNavigate();
+  const setViewingStudent = useAuthStore((s) => s.setViewingStudent);
   if (!student) return null;
 
   const isActive = student.status === 'Active';
@@ -167,7 +169,7 @@ const StudentDetailModal = ({ student, onClose }) => {
               Send Reminder
             </button>
             <button
-              onClick={() => { onClose(); navigate(`/trainer/student/${student._id}`); }}
+              onClick={() => { setViewingStudent(student); onClose(); navigate('/dashboard'); }}
               className="flex-1 py-2 text-sm font-semibold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors"
             >
               View Full Profile
