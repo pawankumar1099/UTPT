@@ -11,6 +11,7 @@ import {
   topPerformers,
   atRiskStudents,
   insights,
+  immersionExam,
 } from '@/data/trainer.mock';
 
 const simulate = (data, ms = 400) =>
@@ -63,6 +64,11 @@ export const getInsights = () =>
   simulate(insights);
 // Real: return api.get('/trainer/insights').then(r => r.data);
 
+// GET /trainer/immersion-exam/latest
+export const getImmersionExam = () =>
+  simulate(immersionExam);
+// Real: return api.get('/trainer/immersion-exam/latest').then(r => r.data);
+
 // GET /trainer/students/:id
 export const getStudentById = (id) => {
   const student = allStudents.find((s) => s._id === id) ?? null;
@@ -72,12 +78,13 @@ export const getStudentById = (id) => {
 
 // Aggregate call used by the trainer dashboard page
 export const getTrainerDashboard = async () => {
-  const [overviewRes, trendRes, topRes, atRiskRes, insightsRes] = await Promise.all([
+  const [overviewRes, trendRes, topRes, atRiskRes, insightsRes, examRes] = await Promise.all([
     getTrainerOverview(),
     getActivityTrend(),
     getTopPerformers(),
     getAtRiskStudents(),
     getInsights(),
+    getImmersionExam(),
   ]);
   return {
     profile: overviewRes.profile,
@@ -86,5 +93,6 @@ export const getTrainerDashboard = async () => {
     topPerformers: topRes,
     atRisk: atRiskRes,
     insights: insightsRes,
+    immersionExam: examRes,
   };
 };

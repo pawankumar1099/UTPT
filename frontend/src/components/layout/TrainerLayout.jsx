@@ -21,6 +21,4 @@ const TrainerLayout = () => {
   );
 };
 
-export const useTrainerLayoutData = () => useOutletContext();
-
 export default TrainerLayout;

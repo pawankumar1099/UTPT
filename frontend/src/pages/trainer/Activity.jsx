@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTrainerLayoutData } from '@/components/layout/TrainerLayout';
+import { useTrainerLayoutData } from '@/hooks/useTrainerLayoutData';
 import ActivityTrendChart from '@/components/trainer/ActivityTrendChart';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';

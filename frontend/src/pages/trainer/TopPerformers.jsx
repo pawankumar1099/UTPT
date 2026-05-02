@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTrainerLayoutData } from '@/components/layout/TrainerLayout';
+import { useTrainerLayoutData } from '@/hooks/useTrainerLayoutData';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { TrendingUp, Flame, Code2, GitBranch } from 'lucide-react';

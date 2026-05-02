@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useTrainerLayoutData } from '@/components/layout/TrainerLayout';
+import { useTrainerLayoutData } from '@/hooks/useTrainerLayoutData';
 import OverviewCards from '@/components/trainer/OverviewCards';
 import ActivityTrendChart from '@/components/trainer/ActivityTrendChart';
 import StudentsTable from '@/components/trainer/StudentsTable';
-import TopPerformers from '@/components/trainer/TopPerformers';
+import ImmersionExamCard from '@/components/trainer/ImmersionExamCard';
 import AtRiskStudents from '@/components/trainer/AtRiskStudents';
 import InsightsPanel from '@/components/trainer/InsightsPanel';
 import StudentDetailModal from '@/components/trainer/StudentDetailModal';
@@ -44,10 +44,7 @@ const TrainerDashboard = () => {
           <div className="lg:col-span-2">
             <ActivityTrendChart trend={data?.trend} />
           </div>
-          <TopPerformers
-            performers={data?.topPerformers}
-            onViewStudent={setSelectedStudent}
-          />
+          <ImmersionExamCard exam={data?.immersionExam} />
         </div>
 
         <StudentsTable onViewStudent={setSelectedStudent} />

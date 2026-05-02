@@ -130,6 +130,53 @@ export const topPerformers = allStudents.slice(0, 5).map((s, i) => ({
 // Future: api.get('/trainer/at-risk?limit=5')
 export const atRiskStudents = allStudents.filter((s) => s.isAtRisk).slice(0, 5);
 
+// ── Immersion Exam ────────────────────────────────────────────────────────────
+// Weekly in-college exam. Future: api.get('/trainer/immersion-exam/latest')
+
+export const immersionExam = {
+  current: {
+    week: 12,
+    title: 'Arrays & Hashing',
+    date: '2024-05-18T09:00:00.000Z',
+    duration: 90,
+    totalStudents: 120,
+    appeared: 108,
+    passed: 87,
+    avgScore: 68.4,
+    avgScoreChange: 4.2,
+    highestScore: 98,
+    lowestScore: 22,
+    passPercent: 80.6,
+    topScorers: [
+      { _id: allStudents[0]._id, name: allStudents[0].name, avatarUrl: allStudents[0].avatarUrl, score: 98, rank: 1 },
+      { _id: allStudents[2]._id, name: allStudents[2].name, avatarUrl: allStudents[2].avatarUrl, score: 94, rank: 2 },
+      { _id: allStudents[1]._id, name: allStudents[1].name, avatarUrl: allStudents[1].avatarUrl, score: 91, rank: 3 },
+    ],
+    scoreDistribution: [
+      { range: '0–20',  count: 4  },
+      { range: '21–40', count: 8  },
+      { range: '41–60', count: 22 },
+      { range: '61–80', count: 45 },
+      { range: '81–100',count: 29 },
+    ],
+  },
+  upcoming: {
+    week: 13,
+    title: 'Linked Lists & Trees',
+    date: '2024-05-25T09:00:00.000Z',
+    duration: 90,
+  },
+  // Last 6 weeks trend — for sparkline
+  weeklyTrend: [
+    { week: 'Wk 7',  avgScore: 58.1, topic: 'Strings' },
+    { week: 'Wk 8',  avgScore: 61.0, topic: 'Sorting' },
+    { week: 'Wk 9',  avgScore: 59.4, topic: 'Binary Search' },
+    { week: 'Wk 10', avgScore: 63.8, topic: 'Stacks & Queues' },
+    { week: 'Wk 11', avgScore: 64.2, topic: 'Recursion' },
+    { week: 'Wk 12', avgScore: 68.4, topic: 'Arrays & Hashing' },
+  ],
+};
+
 // ── Insights ─────────────────────────────────────────────────────────────────
 // Future: api.get('/trainer/insights') — server-computed alerts
 export const insights = [
