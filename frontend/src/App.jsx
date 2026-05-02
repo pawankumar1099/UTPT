@@ -13,11 +13,11 @@ import Notifications from '@/pages/student/Notifications';
 import Settings from '@/pages/student/Settings';
 import TrainerDashboard from '@/pages/trainer/Dashboard';
 import TrainerStudents from '@/pages/trainer/Students';
-import TrainerStudentProfile from '@/pages/trainer/StudentProfile';
 import TrainerActivity from '@/pages/trainer/Activity';
 import TrainerTopPerformers from '@/pages/trainer/TopPerformers';
 import TrainerAtRisk from '@/pages/trainer/AtRisk';
 import TrainerImmersion from '@/pages/trainer/Immersion';
+import TrainerStudentProfile from '@/pages/trainer/StudentProfile';
 import AdminDashboard from '@/pages/admin/Dashboard';
 import NotFound from '@/pages/NotFound';
 
@@ -45,11 +45,11 @@ function App() {
         <Route path="/trainer" element={<TrainerLayout />}>
           <Route index element={<TrainerDashboard />} />
           <Route path="students" element={<TrainerStudents />} />
-          <Route path="students/:studentId" element={<TrainerStudentProfile />} />
           <Route path="activity" element={<TrainerActivity />} />
           <Route path="top" element={<TrainerTopPerformers />} />
           <Route path="at-risk" element={<TrainerAtRisk />} />
           <Route path="immersion" element={<TrainerImmersion />} />
+          <Route path="student/:studentId" element={<TrainerStudentProfile />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

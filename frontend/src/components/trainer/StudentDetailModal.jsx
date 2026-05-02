@@ -1,6 +1,6 @@
 import React from 'react';
-import { X, Flame, GitBranch, Code2, TrendingUp, TrendingDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { X, Flame, GitBranch, Code2, TrendingUp, TrendingDown } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
@@ -48,11 +48,6 @@ const StudentDetailModal = ({ student, onClose }) => {
 
   const isActive = student.status === 'Active';
   const stats = student.codingStats;
-
-  const handleViewFullProfile = () => {
-    onClose();
-    navigate(`/trainer/students/${student._id}`);
-  };
 
   return (
     <div
@@ -172,7 +167,7 @@ const StudentDetailModal = ({ student, onClose }) => {
               Send Reminder
             </button>
             <button
-              onClick={handleViewFullProfile}
+              onClick={() => { onClose(); navigate(`/trainer/student/${student._id}`); }}
               className="flex-1 py-2 text-sm font-semibold rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors"
             >
               View Full Profile
