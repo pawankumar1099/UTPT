@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import TrainerLayout from '@/components/layout/TrainerLayout';
@@ -19,10 +19,25 @@ import TrainerAtRisk from '@/pages/trainer/AtRisk';
 import TrainerImmersion from '@/pages/trainer/Immersion';
 import AdminDashboard from '@/pages/admin/Dashboard';
 import NotFound from '@/pages/NotFound';
+import { useAuthStore } from '@/store/authStore';
+
+function ThemeWatcher() {
+  const theme = useAuthStore((s) => s.theme);
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [theme]);
+  return null;
+}
 
 function App() {
   return (
     <Router>
+      <ThemeWatcher />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

@@ -9,7 +9,7 @@ const TrainerLayout = () => {
   const profile = data?.profile;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-100">
+    <div className="flex h-screen overflow-hidden bg-slate-100 dark:bg-slate-950">
       <TrainerSidebar profile={profile} />
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <TrainerTopbar profile={profile} />

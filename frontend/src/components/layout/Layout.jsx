@@ -21,7 +21,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-100">
+    <div className="flex h-screen overflow-hidden bg-slate-100 dark:bg-slate-950">
       <Sidebar profile={profile} />
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {viewingStudent && (
