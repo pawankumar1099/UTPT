@@ -21,14 +21,6 @@
     background-attachment: fixed;
     font-feature-settings: 'cv11', 'ss01';
   }
-
-  .dark body {
-    background:
-      radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 90%),
-      radial-gradient(circle at 90% 80%, rgba(30, 27, 75, 0.4) 0%, rgba(15, 23, 42, 0.8) 90%);
-    background-color: #0f172a;
-    background-attachment: fixed;
-  }
 }
 
 @layer components {
@@ -48,24 +40,6 @@
 
   .glass-sidebar {
     @apply bg-white backdrop-blur-2xl border-r border-white/10;
-  }
-
-  .dark .glass-panel {
-    @apply bg-slate-900/80 backdrop-blur-xl border-white/5;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  }
-
-  .dark .glass-card {
-    @apply bg-slate-800/60 backdrop-blur-md border-white/5;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
-  }
-
-  .dark .glass-card:hover {
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  }
-
-  .dark .glass-sidebar {
-    @apply bg-slate-900 border-r border-white/5;
   }
 }
 
@@ -89,8 +63,5 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background: rgba(148, 163, 184, 0.4);
     border-radius: 9999px;
-  }
-  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: rgba(71, 85, 105, 0.6);
   }
 }
