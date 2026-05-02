@@ -6,6 +6,7 @@ import {
   TrendingUp,
   Trophy,
   AlertTriangle,
+  BookOpen,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -16,11 +17,12 @@ import navLogo from '@/assets/navLogo.png';
 import arivanaLogo from '@/assets/arivanaLogo.png';
 
 const navItems = [
-  { to: '/trainer',          label: 'Overview',        icon: LayoutDashboard, end: true },
-  { to: '/trainer/students', label: 'Students',        icon: Users },
-  { to: '/trainer/activity', label: 'Activity',        icon: TrendingUp },
-  { to: '/trainer/top',      label: 'Top Performers',  icon: Trophy },
-  { to: '/trainer/at-risk',  label: 'At-Risk',         icon: AlertTriangle },
+  { to: '/trainer',            label: 'Overview',       icon: LayoutDashboard, end: true },
+  { to: '/trainer/students',   label: 'Students',       icon: Users },
+  { to: '/trainer/activity',   label: 'Activity',       icon: TrendingUp },
+  { to: '/trainer/top',        label: 'Top Performers', icon: Trophy },
+  { to: '/trainer/at-risk',    label: 'At-Risk',        icon: AlertTriangle },
+  { to: '/trainer/immersion',  label: 'Immersion Exam', icon: BookOpen },
 ];
 
 const TrainerSidebar = ({ profile }) => {

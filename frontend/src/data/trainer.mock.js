@@ -177,6 +177,40 @@ export const immersionExam = {
   ],
 };
 
+// ── Per-student Immersion Exam Results (Week 12) ──────────────────────────────
+// Future: api.get('/trainer/immersion-exam/latest/results')
+const WEAK_TOPICS = ['Arrays', 'Hashing', 'Two Pointers', 'Sliding Window', 'Binary Search'];
+
+function buildExamResult(student, i) {
+  let marks;
+  if (i < 5) {
+    marks = [98, 94, 91, 87, 85][i];
+  } else if (i >= 20 && i < 30) {
+    marks = [38, 22, 31, 15, 29, 42, 18, 35, 27, 33][i - 20];
+  } else {
+    marks = 45 + ((i * 17 + 7) % 45);
+  }
+  const status = marks >= 40 ? 'Pass' : 'Fail';
+  const grade = marks >= 75 ? 'Good' : marks >= 50 ? 'Average' : 'Poor';
+  const weakArea = marks < 75 ? WEAK_TOPICS[i % WEAK_TOPICS.length] : null;
+  return {
+    _id: student._id,
+    name: student.name,
+    avatarUrl: student.avatarUrl,
+    branch: student.branch,
+    marks,
+    status,
+    grade,
+    weakArea,
+  };
+}
+
+export const immersionExamResults = allStudents
+  .slice(0, 108)
+  .map((s, i) => buildExamResult(s, i))
+  .sort((a, b) => b.marks - a.marks)
+  .map((s, i) => ({ ...s, rank: i + 1 }));
+
 // ── Insights ─────────────────────────────────────────────────────────────────
 // Future: api.get('/trainer/insights') — server-computed alerts
 export const insights = [

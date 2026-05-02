@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTrainerLayoutData } from '@/hooks/useTrainerLayoutData';
 import OverviewCards from '@/components/trainer/OverviewCards';
 import ActivityTrendChart from '@/components/trainer/ActivityTrendChart';
-import StudentsTable from '@/components/trainer/StudentsTable';
+import TopPerformers from '@/components/trainer/TopPerformers';
 import ImmersionExamCard from '@/components/trainer/ImmersionExamCard';
 import AtRiskStudents from '@/components/trainer/AtRiskStudents';
 import InsightsPanel from '@/components/trainer/InsightsPanel';
@@ -26,10 +26,10 @@ const TrainerDashboard = () => {
           <div className="lg:col-span-2"><SkeletonCard h="h-72" /></div>
           <SkeletonCard h="h-72" />
         </div>
-        <SkeletonCard h="h-96" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SkeletonCard h="h-64" />
-          <SkeletonCard h="h-64" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <SkeletonCard h="h-96" />
+          <SkeletonCard h="h-96" />
+          <SkeletonCard h="h-96" />
         </div>
       </div>
     );
@@ -44,12 +44,14 @@ const TrainerDashboard = () => {
           <div className="lg:col-span-2">
             <ActivityTrendChart trend={data?.trend} />
           </div>
-          <ImmersionExamCard exam={data?.immersionExam} />
+          <TopPerformers
+            performers={data?.topPerformers}
+            onViewStudent={setSelectedStudent}
+          />
         </div>
 
-        <StudentsTable onViewStudent={setSelectedStudent} />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <ImmersionExamCard exam={data?.immersionExam} />
           <AtRiskStudents
             students={data?.atRisk}
             onViewStudent={setSelectedStudent}
