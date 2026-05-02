@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
+import TrainerLayout from '@/components/layout/TrainerLayout';
 import Login from '@/pages/auth/Login';
 import Register from '@/pages/auth/Register';
 import Dashboard from '@/pages/student/Dashboard';
@@ -20,6 +21,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Student routes */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -29,9 +32,14 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="settings" element={<Settings />} />
-          <Route path="trainer" element={<TrainerDashboard />} />
           <Route path="admin" element={<AdminDashboard />} />
         </Route>
+
+        {/* Trainer routes */}
+        <Route path="/trainer" element={<TrainerLayout />}>
+          <Route index element={<TrainerDashboard />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
