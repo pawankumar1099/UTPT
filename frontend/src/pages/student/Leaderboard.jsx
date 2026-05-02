@@ -264,29 +264,26 @@ function ImmersionRow({ entry }) {
   );
 }
 
-// ── Week filter pills ─────────────────────────────────────────────────────────
+// ── Week dropdown ─────────────────────────────────────────────────────────────
 
-function WeekPills({ selectedWeek, onChange }) {
+function WeekDropdown({ selectedWeek, onChange }) {
+  const current = IMMERSION_WEEKS.find((w) => w.week === selectedWeek);
   return (
-    <div className="flex items-center gap-2 flex-wrap">
+    <div className="flex items-center gap-2">
       <span className="text-xs text-slate-400 font-medium uppercase tracking-wide shrink-0">Week</span>
-      <div className="flex items-center gap-1.5 flex-wrap">
-        {IMMERSION_WEEKS.map(({ week, label, topic }) => (
-          <button
-            key={week}
-            onClick={() => onChange(week)}
-            title={topic}
-            className={cn(
-              'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border',
-              selectedWeek === week
-                ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                : 'bg-white text-slate-500 border-slate-200 hover:border-indigo-300 hover:text-indigo-600',
-            )}
-          >
-            {label}
-          </button>
+      <select
+        value={selectedWeek}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="pl-3 pr-8 py-2 rounded-xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent appearance-none cursor-pointer shadow-sm"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 10px center' }}
+      >
+        {IMMERSION_WEEKS.map(({ week, label }) => (
+          <option key={week} value={week}>{label}</option>
         ))}
-      </div>
+      </select>
+      {current && (
+        <span className="text-xs text-slate-400 hidden sm:inline">— {current.topic}</span>
+      )}
     </div>
   );
 }
@@ -294,7 +291,7 @@ function WeekPills({ selectedWeek, onChange }) {
 // ── Immersion View ────────────────────────────────────────────────────────────
 
 function ImmersionView() {
-  const [selectedWeek, setSelectedWeek] = useState(12);
+  const [selectedWeek, setSelectedWeek] = useState(8);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -307,7 +304,7 @@ function ImmersionView() {
 
   return (
     <div className="space-y-6">
-      <WeekPills selectedWeek={selectedWeek} onChange={setSelectedWeek} />
+      <WeekDropdown selectedWeek={selectedWeek} onChange={setSelectedWeek} />
 
       {loading || !data ? (
         <div className="flex items-center justify-center h-64">

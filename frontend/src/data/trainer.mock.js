@@ -182,16 +182,18 @@ export const immersionExam = {
 const WEAK_TOPICS = ['Arrays', 'Hashing', 'Two Pointers', 'Sliding Window', 'Binary Search'];
 
 export const IMMERSION_WEEKS = [
-  { week: 7,  label: 'Week 7',  topic: 'Strings',          date: '2024-04-06T09:00:00.000Z' },
-  { week: 8,  label: 'Week 8',  topic: 'Sorting',          date: '2024-04-13T09:00:00.000Z' },
-  { week: 9,  label: 'Week 9',  topic: 'Binary Search',    date: '2024-04-20T09:00:00.000Z' },
-  { week: 10, label: 'Week 10', topic: 'Stacks & Queues',  date: '2024-04-27T09:00:00.000Z' },
-  { week: 11, label: 'Week 11', topic: 'Recursion',        date: '2024-05-11T09:00:00.000Z' },
-  { week: 12, label: 'Week 12', topic: 'Arrays & Hashing', date: '2024-05-18T09:00:00.000Z' },
+  { week: 1, label: 'Week 1', topic: 'Introduction to DSA',  date: '2024-02-10T09:00:00.000Z' },
+  { week: 2, label: 'Week 2', topic: 'Arrays & Strings',     date: '2024-02-17T09:00:00.000Z' },
+  { week: 3, label: 'Week 3', topic: 'Linked Lists',         date: '2024-02-24T09:00:00.000Z' },
+  { week: 4, label: 'Week 4', topic: 'Stacks & Queues',      date: '2024-03-02T09:00:00.000Z' },
+  { week: 5, label: 'Week 5', topic: 'Sorting Algorithms',   date: '2024-03-09T09:00:00.000Z' },
+  { week: 6, label: 'Week 6', topic: 'Binary Search',        date: '2024-03-16T09:00:00.000Z' },
+  { week: 7, label: 'Week 7', topic: 'Recursion & Backtrack',date: '2024-03-23T09:00:00.000Z' },
+  { week: 8, label: 'Week 8', topic: 'Trees & Graphs',       date: '2024-03-30T09:00:00.000Z' },
 ];
 
-// Avg score targets per week (matches weeklyTrend)
-const WEEK_AVG = { 7: 58, 8: 61, 9: 59, 10: 64, 11: 64, 12: 68 };
+// Avg score targets per week
+const WEEK_AVG = { 1: 52, 2: 55, 3: 57, 4: 58, 5: 61, 6: 63, 7: 65, 8: 68 };
 
 function buildExamResultForWeek(student, i, weekNum) {
   const avgTarget = WEEK_AVG[weekNum] ?? 65;
@@ -233,15 +235,17 @@ function buildWeekResults(weekNum) {
     .map((s, i) => ({ ...s, rank: i + 1 }));
 }
 
-export const immersionExamResults = buildWeekResults(12);
+export const immersionExamResults = buildWeekResults(8);
 
 export const immersionExamResultsByWeek = {
-  7:  buildWeekResults(7),
-  8:  buildWeekResults(8),
-  9:  buildWeekResults(9),
-  10: buildWeekResults(10),
-  11: buildWeekResults(11),
-  12: immersionExamResults,
+  1: buildWeekResults(1),
+  2: buildWeekResults(2),
+  3: buildWeekResults(3),
+  4: buildWeekResults(4),
+  5: buildWeekResults(5),
+  6: buildWeekResults(6),
+  7: buildWeekResults(7),
+  8: immersionExamResults,
 };
 
 // ── Insights ─────────────────────────────────────────────────────────────────

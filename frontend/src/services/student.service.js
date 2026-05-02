@@ -26,7 +26,7 @@ import {
 } from '@/data/student.mock';
 import { immersionExamResultsByWeek, IMMERSION_WEEKS } from '@/data/trainer.mock';
 
-const ME_MARKS_BY_WEEK = { 7: 58, 8: 65, 9: 55, 10: 69, 11: 71, 12: 72 };
+const ME_MARKS_BY_WEEK = { 1: 48, 2: 54, 3: 58, 4: 61, 5: 65, 6: 68, 7: 70, 8: 72 };
 
 function buildImmersionRows(weekNum) {
   const marks = ME_MARKS_BY_WEEK[weekNum] ?? 72;

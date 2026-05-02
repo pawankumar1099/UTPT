@@ -499,28 +499,27 @@ const Skeleton = () => (
 );
 
 // ── Week Selector ─────────────────────────────────────────────────────────────
-const WeekSelector = ({ selectedWeek, onChange }) => (
-  <div className="flex items-center gap-2 flex-wrap">
-    <span className="text-xs text-slate-400 font-semibold uppercase tracking-wide shrink-0">Week</span>
-    <div className="flex items-center gap-1.5 flex-wrap">
-      {IMMERSION_WEEKS.map(({ week, label, topic }) => (
-        <button
-          key={week}
-          onClick={() => onChange(week)}
-          title={topic}
-          className={cn(
-            'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 border',
-            selectedWeek === week
-              ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-              : 'bg-white/60 text-slate-500 border-white/40 hover:border-indigo-300 hover:text-indigo-600 backdrop-blur-md',
-          )}
-        >
-          {label}
-        </button>
-      ))}
+const WeekSelector = ({ selectedWeek, onChange }) => {
+  const current = IMMERSION_WEEKS.find((w) => w.week === selectedWeek);
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-xs text-slate-400 font-semibold uppercase tracking-wide shrink-0">Week</span>
+      <select
+        value={selectedWeek}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="pl-3 pr-8 py-2 rounded-xl border border-white/40 bg-white/60 backdrop-blur-md text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent appearance-none cursor-pointer shadow-sm"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 10px center' }}
+      >
+        {IMMERSION_WEEKS.map(({ week, label }) => (
+          <option key={week} value={week}>{label}</option>
+        ))}
+      </select>
+      {current && (
+        <span className="text-xs text-slate-400 hidden sm:inline">— {current.topic}</span>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 // ── Main Page ─────────────────────────────────────────────────────────────────
 const TABS = [
@@ -535,7 +534,7 @@ const WEEK_TABS = new Set(['students', 'weak']);
 const ImmersionPage = () => {
   const { data, loading } = useTrainerLayoutData();
   const [activeTab,    setActiveTab]    = useState('overview');
-  const [selectedWeek, setSelectedWeek] = useState(12);
+  const [selectedWeek, setSelectedWeek] = useState(8);
   const [weekResults,  setWeekResults]  = useState(null);
   const [weekLoading,  setWeekLoading]  = useState(false);
 
