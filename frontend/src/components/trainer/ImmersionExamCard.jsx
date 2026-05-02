@@ -43,9 +43,7 @@ const ImmersionExamCard = ({ exam }) => {
               <p className="text-[11px] text-slate-400 mt-0.5">Week {current.week} · {formatDate(current.date)}</p>
             </div>
           </div>
-          <span className="text-[11px] font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-full shrink-0">
-            {current.title}
-          </span>
+          
         </div>
       </CardHeader>
 
@@ -70,16 +68,7 @@ const ImmersionExamCard = ({ exam }) => {
         <div className="flex items-center gap-3 bg-indigo-50/60 rounded-xl p-3">
           <div className="flex-1">
             <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Avg Score</p>
-            <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="text-2xl font-black text-indigo-700">{current.avgScore}%</span>
-              <span className={cn(
-                'flex items-center gap-0.5 text-xs font-bold',
-                scoreUp ? 'text-emerald-600' : 'text-rose-500',
-              )}>
-                {scoreUp ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
-                {scoreUp ? '+' : ''}{current.avgScoreChange}%
-              </span>
-            </div>
+            
             <div className="flex items-center gap-2 mt-1 text-[10px] text-slate-400">
               <span>High: <b className="text-slate-600">{current.highestScore}</b></span>
               <span>·</span>
@@ -88,21 +77,7 @@ const ImmersionExamCard = ({ exam }) => {
               <span>Pass: <b className="text-emerald-600">{current.passPercent}%</b></span>
             </div>
           </div>
-          <div className="w-24 h-12 shrink-0">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={weeklyTrend}>
-                <Tooltip content={<SparkTooltip />} />
-                <Line
-                  type="monotone"
-                  dataKey="avgScore"
-                  stroke="#6366f1"
-                  strokeWidth={2}
-                  dot={false}
-                  activeDot={{ r: 3, fill: '#6366f1' }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+          
         </div>
 
         {/* Score distribution mini bar */}
@@ -134,34 +109,10 @@ const ImmersionExamCard = ({ exam }) => {
         </div>
 
         {/* Top scorers */}
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Top Scorers</p>
-            <Award className="h-3.5 w-3.5 text-amber-400" />
-          </div>
-          <div className="space-y-1.5">
-            {current.topScorers.map((s, i) => (
-              <div key={s._id} className="flex items-center gap-2.5">
-                <span className="text-base w-5 text-center leading-none shrink-0">{medals[i]}</span>
-                <Avatar className="h-6 w-6 shrink-0">
-                  <AvatarImage src={s.avatarUrl} alt={s.name} />
-                  <AvatarFallback className="text-[9px]">{s.name[0]}</AvatarFallback>
-                </Avatar>
-                <span className="flex-1 text-xs font-medium text-slate-700 truncate">{s.name}</span>
-                <span className="text-xs font-black text-indigo-600 shrink-0">{s.score}%</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Upcoming exam */}
-        <div className="flex items-center gap-2.5 bg-amber-50 border border-amber-100 rounded-xl p-3 mt-1">
-          <Calendar className="h-4 w-4 text-amber-500 shrink-0" />
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-amber-800">Upcoming — Week {upcoming.week}</p>
-            <p className="text-[11px] text-amber-600 truncate">{upcoming.title} · {formatDate(upcoming.date)}</p>
-          </div>
-        </div>
+        
       </CardContent>
     </Card>
   );

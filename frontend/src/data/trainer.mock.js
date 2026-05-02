@@ -136,7 +136,6 @@ export const atRiskStudents = allStudents.filter((s) => s.isAtRisk).slice(0, 5);
 export const immersionExam = {
   current: {
     week: 12,
-    title: 'Arrays & Hashing',
     date: '2024-05-18T09:00:00.000Z',
     duration: 90,
     totalStudents: 120,

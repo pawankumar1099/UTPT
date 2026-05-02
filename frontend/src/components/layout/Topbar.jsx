@@ -20,16 +20,7 @@ const Topbar = ({ profile, streak = 0, unreadNotifications = 0 }) => {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <div 
-            className="hidden md:flex items-center gap-2 rounded-xl border border-white/40 bg-white/40 backdrop-blur-md px-3 py-1.5 w-64 focus-within:bg-white transition-all"
-            style={{ boxShadow: '0 4px 16px 0 rgba(31, 38, 135, 0.04)' }}
-          >
-            <Search className="h-4 w-4 text-black/30" />
-            <input
-              placeholder="Search..."
-              className="bg-transparent w-full text-xs font-medium placeholder:text-black/30 focus:outline-none"
-            />
-          </div>
+          
 
           <div 
             className="flex items-center gap-2 rounded-xl bg-white/60 backdrop-blur-md border border-white/40 px-3 py-1.5 transition-transform hover:scale-105 cursor-default"

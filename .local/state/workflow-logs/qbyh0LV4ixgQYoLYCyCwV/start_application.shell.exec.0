@@ -1,0 +1,1443 @@
+
+> frontend@0.0.0 dev
+> vite
+
+[1G[0K
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J
+  [32m[1mVITE[22m v8.0.10[39m  [2mready in [0m[1m199[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5000[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.31.67.194:[1m5000[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m6:29:50 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/auth/Register" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:5:21
+[33m  3  |  import Layout from "./components/layout/Layout";
+  4  |  import Login from "./pages/auth/Login";
+  5  |  import Register from "./pages/auth/Register";
+     |                        ^
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:29:50 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/auth/Register" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:5:21
+[33m  3  |  import Layout from "./components/layout/Layout";
+  4  |  import Login from "./pages/auth/Login";
+  5  |  import Register from "./pages/auth/Register";
+     |                        ^
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:29:51 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/auth/Register" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:5:21
+[33m  3  |  import Layout from "./components/layout/Layout";
+  4  |  import Login from "./pages/auth/Login";
+  5  |  import Register from "./pages/auth/Register";
+     |                        ^
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:29:51 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/auth/Register" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:5:21
+[33m  3  |  import Layout from "./components/layout/Layout";
+  4  |  import Login from "./pages/auth/Login";
+  5  |  import Register from "./pages/auth/Register";
+     |                        ^
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+[2m6:29:58 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/auth/Register" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:5:21
+[33m  3  |  import Layout from "./components/layout/Layout";
+  4  |  import Login from "./pages/auth/Login";
+  5  |  import Register from "./pages/auth/Register";
+     |                        ^
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:29:58 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/auth/Register" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:5:21
+[33m  3  |  import Layout from "./components/layout/Layout";
+  4  |  import Login from "./pages/auth/Login";
+  5  |  import Register from "./pages/auth/Register";
+     |                        ^
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:36 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/auth/Register.jsx[22m
+[2m6:30:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Coding" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:7:19
+[33m  5  |  import Register from "./pages/auth/Register";
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+     |                      ^
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Coding" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:7:19
+[33m  5  |  import Register from "./pages/auth/Register";
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+     |                      ^
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:36 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Coding" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:7:19
+[33m  5  |  import Register from "./pages/auth/Register";
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+     |                      ^
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:36 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/student/Coding" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:7:19
+[33m  5  |  import Register from "./pages/auth/Register";
+  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+     |                      ^
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 6)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:41 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/student/Coding.jsx[22m
+[2m6:30:42 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Github" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:8:19
+[33m  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+     |                      ^
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:42 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Github" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:8:19
+[33m  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+     |                      ^
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:42 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Github" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:8:19
+[33m  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+     |                      ^
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:42 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Github" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:8:19
+[33m  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+     |                      ^
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";[39m [33m(x4)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:42 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/student/Github" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:8:19
+[33m  6  |  import Dashboard from "./pages/student/Dashboard";
+  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+     |                      ^
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 7)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:48 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/student/Github.jsx[22m
+[2m6:30:48 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Leaderboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:9:24
+[33m  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+     |                           ^
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:48 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Leaderboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:9:24
+[33m  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+     |                           ^
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:48 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Leaderboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:9:24
+[33m  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+     |                           ^
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:48 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Leaderboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:9:24
+[33m  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+     |                           ^
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";[39m [33m(x4)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:48 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/student/Leaderboard" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:9:24
+[33m  7  |  import Coding from "./pages/student/Coding";
+  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+     |                           ^
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 8)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:53 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/student/Leaderboard.jsx[22m
+[2m6:30:53 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Profile" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:10:20
+[33m  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+     |                       ^
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:53 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Profile" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:10:20
+[33m  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+     |                       ^
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:53 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Profile" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:10:20
+[33m  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+     |                       ^
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:53 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Profile" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:10:20
+[33m  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+     |                       ^
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";[39m [33m(x4)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:53 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/student/Profile" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:10:20
+[33m  8  |  import Github from "./pages/student/Github";
+  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+     |                       ^
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 9)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:59 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/student/Profile.jsx[22m
+[2m6:30:59 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Notifications" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:11:26
+[33m  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+     |                             ^
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:30:59 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Notifications" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:11:26
+[33m  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+     |                             ^
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:00 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/student/Notifications" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:11:26
+[33m  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+     |                             ^
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:00 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/student/Notifications" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:11:26
+[33m  9  |  import Leaderboard from "./pages/student/Leaderboard";
+  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+     |                             ^
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 10)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:04 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/student/Notifications.jsx[22m
+[2m6:31:04 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/trainer/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:12:29
+[33m  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+     |                                ^
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:04 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/trainer/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:12:29
+[33m  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+     |                                ^
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:05 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/trainer/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:12:29
+[33m  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+     |                                ^
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:05 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/trainer/Dashboard" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:12:29
+[33m  10 |  import Profile from "./pages/student/Profile";
+  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+     |                                ^
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 11)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:09 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/trainer/Dashboard.jsx[22m
+[2m6:31:09 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/admin/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:13:27
+[33m  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+     |                              ^
+  14 |  import NotFound from "./pages/NotFound";
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:09 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/admin/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:13:27
+[33m  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+     |                              ^
+  14 |  import NotFound from "./pages/NotFound";
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:09 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/admin/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:13:27
+[33m  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+     |                              ^
+  14 |  import NotFound from "./pages/NotFound";
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:10 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/admin/Dashboard" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:13:27
+[33m  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+     |                              ^
+  14 |  import NotFound from "./pages/NotFound";
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";[39m [33m(x4)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:10 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/admin/Dashboard" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:13:27
+[33m  11 |  import Notifications from "./pages/student/Notifications";
+  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+     |                              ^
+  14 |  import NotFound from "./pages/NotFound";
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 12)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:14 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/admin/Dashboard.jsx[22m
+[2m6:31:15 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/NotFound" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:14:21
+[33m  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";
+     |                        ^
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";
+  16 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:15 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/NotFound" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:14:21
+[33m  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";
+     |                        ^
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";
+  16 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m [33m(x2)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:15 AM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "./pages/NotFound" from "src/App.jsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:14:21
+[33m  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";
+     |                        ^
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";
+  16 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m [33m(x3)[39m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:15 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/NotFound" from "src/App.jsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36m/home/runner/workspace/frontend/src/App.jsx[39m:14:21
+[33m  12 |  import TrainerDashboard from "./pages/trainer/Dashboard";
+  13 |  import AdminDashboard from "./pages/admin/Dashboard";
+  14 |  import NotFound from "./pages/NotFound";
+     |                        ^
+  15 |  var _jsxFileName = "/home/runner/workspace/frontend/src/App.jsx";
+  16 |  import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";[39m
+      at TransformPluginContext._formatLog (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30375:39)
+      at TransformPluginContext.error (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30372:14)
+      at normalizeUrl (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27654:18)
+      at async file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27717:30
+      at async Promise.all (index 13)
+      at async TransformPluginContext.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:27685:4)
+      at async EnvironmentPluginContainer.transform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:30164:14)
+      at async loadAndTransform (file:///home/runner/workspace/frontend/node_modules/vite/dist/node/chunks/node.js:24512:26)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m6:31:21 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/pages/NotFound.jsx[22m

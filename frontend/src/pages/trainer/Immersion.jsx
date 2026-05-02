@@ -187,15 +187,7 @@ const OverviewTab = ({ exam }) => {
         </Card>
       </div>
 
-      <div className="flex items-center gap-3 bg-amber-50 border border-amber-100 rounded-2xl p-4">
-        <Calendar className="h-5 w-5 text-amber-500 shrink-0" />
-        <div>
-          <p className="text-sm font-bold text-amber-800">
-            Next up — Week {upcoming.week}: {upcoming.title}
-          </p>
-          <p className="text-xs text-amber-600">{formatDate(upcoming.date)} · {upcoming.duration} min</p>
-        </div>
-      </div>
+      
     </div>
   );
 };
@@ -216,7 +208,7 @@ const CustomLineTooltip = ({ active, payload, label }) => {
   const topic = payload[0]?.payload?.topic;
   return (
     <div className="bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs shadow-lg">
-      <p className="font-bold text-slate-700">{label}{topic ? ` — ${topic}` : ''}</p>
+     
       <p className="text-indigo-600 font-bold mt-0.5">{payload[0].value}%</p>
     </div>
   );
@@ -346,7 +338,7 @@ const StudentsTab = ({ results }) => {
                   <th className="text-left py-3 px-4 text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Marks</th>
                   <th className="text-left py-3 px-4 text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Status</th>
                   <th className="text-left py-3 px-4 text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Grade</th>
-                  <th className="text-left py-3 px-4 text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Weak Area</th>
+                  
                 </tr>
               </thead>
               <tbody>
@@ -394,16 +386,7 @@ const StudentsTab = ({ results }) => {
                     </td>
                     <td className="py-3 px-4"><StatusBadge status={s.status} /></td>
                     <td className="py-3 px-4"><GradeBadge grade={s.grade} /></td>
-                    <td className="py-3 px-4">
-                      {s.weakArea ? (
-                        <span className="flex items-center gap-1 text-xs text-rose-600 font-medium">
-                          <AlertTriangle className="h-3 w-3 shrink-0" />
-                          {s.weakArea}
-                        </span>
-                      ) : (
-                        <span className="text-xs text-slate-300">—</span>
-                      )}
-                    </td>
+                    
                   </tr>
                 ))}
               </tbody>
@@ -488,12 +471,7 @@ const WeakStudentsTab = ({ results }) => {
               />
             </div>
 
-            {s.weakArea && (
-              <div className="mt-3 flex items-center gap-1.5 text-xs text-rose-600 font-medium bg-rose-50 rounded-lg px-2.5 py-1.5">
-                <AlertTriangle className="h-3 w-3 shrink-0" />
-                Weak area: <span className="font-bold">{s.weakArea}</span>
-              </div>
-            )}
+            
           </div>
         ))}
       </div>
@@ -546,16 +524,10 @@ const ImmersionPage = () => {
             </div>
             <h1 className="text-xl font-black text-slate-800">Immersion Exam</h1>
           </div>
-          <p className="text-sm text-slate-400 mt-1 ml-10">
-            Week {exam?.current?.week} · {exam?.current?.title} ·{' '}
-            {exam?.current ? formatDate(exam.current.date) : ''}
-          </p>
+          
         </div>
 
-        <div className="flex items-center gap-2 text-xs bg-white/60 border border-white/40 backdrop-blur-md rounded-xl px-3 py-2">
-          <span className="text-slate-400">Duration:</span>
-          <span className="font-bold text-slate-700">{exam?.current?.duration} min</span>
-        </div>
+        
       </div>
 
       <div className="flex gap-1 bg-white/40 border border-white/40 backdrop-blur-md rounded-xl p-1 w-fit overflow-x-auto">
