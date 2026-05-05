@@ -1,8 +1,0 @@
-uploads = []
-generated = []
-
-[[outputs]]
-id = "2j2zZXyl75elJdb5-uFe3"
-uri = "file://BACKEND_DOCS.md"
-type = "text"
-title = "UTPT Backend Documentation"
