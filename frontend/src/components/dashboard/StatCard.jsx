@@ -4,16 +4,16 @@ import { cn, formatNumber } from '@/lib/utils';
 
 const StatCard = ({ icon: Icon, label, value, sublabel, accent = 'indigo', percentage }) => {
   const accents = {
-    indigo: 'bg-white text-black border border-slate-200',
-    emerald: 'bg-white text-black border border-slate-200',
-    amber: 'bg-white text-black border border-slate-200',
-    rose: 'bg-white text-black border border-slate-200',
-    orange: 'bg-white text-black border border-slate-200',
-    slate: 'bg-white text-black border border-slate-200',
+    indigo: 'bg-white text-black border border-slate-500',
+    emerald: 'bg-white text-black border border-slate-500',
+    amber: 'bg-white text-black border border-slate-500',
+    rose: 'bg-white text-black border border-slate-500',
+    orange: 'bg-white text-black border border-slate-500',
+    slate: 'bg-white text-black border border-slate-500',
   };
 
   return (
-    <Card className="p-5 hover:shadow-md hover:scale-105 transition-shadow rounded-sm">
+    <Card className="p-5 hover:shadow-md hover:scale-105 transition-shadow rounded-sm border border-slate-300">
       <div className="flex items-start gap-4">
         <div
           className={cn(

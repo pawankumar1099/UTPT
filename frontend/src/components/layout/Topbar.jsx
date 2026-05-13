@@ -2,18 +2,21 @@ import React from 'react';
 import { Bell, Flame, Menu, Search } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-const Topbar = ({ profile, streak = 0, unreadNotifications = 0 }) => {
+const Topbar = ({ profile, streak = 0, unreadNotifications = 0, onMenuClick }) => {
   return (
-    <header className="sticky top-0 z-10 glass-panel ">
+    <header className="sticky top-0 left-10 mt-5 z-10 glass-panel rounded-full w-[95%]">
       <div className="flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center gap-3 min-w-0">
-          <button className="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-xl hover:bg-white/40 backdrop-blur-md">
+          <button 
+            onClick={onMenuClick}
+            className="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-xl hover:bg-white/40 backdrop-blur-md"
+          >
             <Menu className="h-5 w-5 text-black/60" />
           </button>
           <div className="min-w-0">
             <h1 className="text-lg sm:text-xl font-bold tracking-tight text-[#1d1d1f] truncate">
-              Welcome back, {profile?.name?.split(' ')[0] ?? 'Student'}!{' '}
-              <span aria-hidden>👋</span>
+              {profile?.name?.split(' ')[0] ?? 'Student'}{' '}
+              <span aria-hidden></span>
             </h1>
             <p className="text-[11px] font-semibold text-black/40 uppercase tracking-wider">Keep coding, keep growing!</p>
           </div>

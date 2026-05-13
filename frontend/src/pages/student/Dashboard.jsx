@@ -1,7 +1,7 @@
 import React from 'react';
 import { Code2, CheckCircle2, MinusCircle, XCircle, Flame } from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
-import { useLayoutData } from '@/components/layout/Layout';
+import { useLayoutData } from '@/hooks/useLayoutData';
 import StatCard from '@/components/dashboard/StatCard';
 import CodingProgressCard from '@/components/dashboard/CodingProgressCard';
 import GithubActivityCard from '@/components/dashboard/GithubActivityCard';

@@ -2,12 +2,15 @@ import React from 'react';
 import { Bell, Menu, Search } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-const TrainerTopbar = ({ profile }) => {
+const TrainerTopbar = ({ profile, onMenuClick }) => {
   return (
-    <header className="sticky top-0 z-10 glass-panel">
+    <header className="sticky top-0 left-10 mt-5 z-10 glass-panel rounded-full w-[95%]">
       <div className="flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center gap-3 min-w-0">
-          <button className="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-xl hover:bg-white/40 backdrop-blur-md">
+          <button 
+            onClick={onMenuClick}
+            className="lg:hidden inline-flex items-center justify-center h-9 w-9 rounded-xl hover:bg-white/40 backdrop-blur-md"
+          >
             <Menu className="h-5 w-5 text-black/60" />
           </button>
           <div className="min-w-0">
