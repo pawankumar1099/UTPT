@@ -34,7 +34,23 @@ outputType = "webview"
 localPort = 5000
 externalPort = 80
 
+[[ports]]
+localPort = 5001
+externalPort = 3000
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
+
 [deployment]
 deploymentTarget = "static"
 build = ["bash", "-c", "cd frontend && npm run build"]
 publicDir = "frontend/dist"
+
+[userenv]
+
+[userenv.shared]
+CRON_CODING_SYNC = "0 2 * * *"
+CRON_GITHUB_SYNC = "0 3 * * *"
+CRON_LEADERBOARD = "0 4 * * *"
+RUN_ON_START = "true"
