@@ -14,7 +14,7 @@ async function start() {
   scheduleGithubSync(process.env.CRON_GITHUB_SYNC    || '0 3 * * *');
   scheduleLeaderboardBuild(process.env.CRON_LEADERBOARD || '0 4 * * *');
 
-  app.listen(PORT, 'localhost', () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`[server] UTPT API running on http://localhost:${PORT}`);
     console.log(`[server] Environment: ${process.env.NODE_ENV}`);
   });
