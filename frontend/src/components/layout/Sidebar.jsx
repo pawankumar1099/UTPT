@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Code2,
@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
+import { useAuthStore } from '@/store/authStore';
 import GithubIcon from '@/components/icons/GithubIcon';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
@@ -26,6 +27,13 @@ const navItems = [
 
 const Sidebar = ({ profile, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const logout = useAuthStore((s) => s.logout);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { replace: true });
+  };
 
   return (
     <>
@@ -97,18 +105,17 @@ const Sidebar = ({ profile, isMobileMenuOpen, setIsMobileMenuOpen }) => {
           
 
           <div className="pt-3 mt-3 border-t border-white/10">
-            <NavLink
-              to="/login"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button
+              onClick={() => { setIsMobileMenuOpen(false); handleLogout(); }}
               className={cn(
-                "flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium text-black/60 hover:bg-white/40 hover:text-black transition-all",
+                "w-full flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium text-black/60 hover:bg-white/40 hover:text-black transition-all",
                 isCollapsed && "lg:justify-center lg:px-0"
               )}
               title={isCollapsed ? "Logout" : ""}
             >
               <LogOut className="h-4 w-4 shrink-0" />
               {(!isCollapsed || isMobileMenuOpen) && <span>Logout</span>}
-            </NavLink>
+            </button>
           </div>
 
 

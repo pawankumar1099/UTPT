@@ -313,14 +313,6 @@ const Coding = () => {
         </div>
         <div className="flex items-center gap-3 flex-wrap">
           <PlatformFilter active={platform} onChange={handlePlatformChange} />
-          <button className="flex items-center gap-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-xl px-4 py-2 hover:bg-slate-50 transition-colors shadow-sm">
-            <span>Apr 1 – Apr 30, 2024</span>
-            <ChevronDown size={14} />
-          </button>
-          <button className="flex items-center gap-2 text-sm font-medium text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-2 hover:bg-indigo-100 transition-colors">
-            <Download size={14} />
-            <span>Export Report</span>
-          </button>
         </div>
       </div>
 
