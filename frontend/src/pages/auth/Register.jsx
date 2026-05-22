@@ -1,11 +1,5 @@
-import React from 'react';
+import { Navigate } from 'react-router-dom';
 
-const Register = () => {
-    return (
-        <div>
-            <h1>Register</h1>
-        </div>
-    );
-};
+const Register = () => <Navigate to="/login" replace />;
 
 export default Register;

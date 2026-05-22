@@ -1,4 +1,3 @@
-import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import asyncHandler from '../utils/asyncHandler.js';
@@ -20,8 +19,7 @@ export const login = asyncHandler(async (req, res) => {
 
   if (!user.passwordHash) throw new ApiError(401, 'Account has no password set — contact admin');
 
-  const match = await bcrypt.compare(password, user.passwordHash);
-  if (!match) throw new ApiError(401, 'Invalid email or password');
+  if (user.passwordHash !== password) throw new ApiError(401, 'Invalid email or password');
 
   const token = signToken(user);
   res.json({
@@ -52,7 +50,7 @@ export const setPassword = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email: email.toLowerCase().trim() });
   if (!user) throw new ApiError(404, 'User not found');
 
-  user.passwordHash = await bcrypt.hash(password, 12);
+  user.passwordHash = password;
   await user.save();
 
   res.json({ success: true, message: 'Password set successfully' });
