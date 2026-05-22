@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// Single axios instance. The base URL is read from VITE_API_BASE_URL so the
-// app can point at the future Node/Express + MongoDB backend without code
-// changes. Until then, the service files below resolve with mock data.
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
   timeout: 15000,
@@ -15,5 +12,17 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('utpt_token');
+      localStorage.removeItem('utpt_user');
+      window.location.href = '/login';
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default api;
